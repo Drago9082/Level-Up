@@ -1,0 +1,15 @@
+#container {
+    background-color:  black;
+    min-height: 100vh;
+}
+
+#game-stage {
+    background-color: grey;
+    height: 800px;
+}
+
+#my-profile,
+#favourite-games{
+    background-color: orange;
+    height: 200px;
+}
