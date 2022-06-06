@@ -1,15 +1,27 @@
 #container {
-    background-color:  black;
-    min-height: 100vh;
+  background-color: black;
+  min-height: 100vh;
 }
 
 #game-stage {
-    background-color: grey;
-    height: 800px;
+  background-color: grey;
+  height: auto;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+#game-stage-restraints {
+  max-width: 75%;
+  height: auto;
+  display: block;
+  /* margin: auto; */
 }
 
 #my-profile,
-#favourite-games{
-    background-color: orange;
-    height: 200px;
+#favourite-games {
+  background-color: orange;
+  height: 200px;
 }

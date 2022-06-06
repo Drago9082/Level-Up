@@ -12,7 +12,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import GameDemo from "./pages/GameDemo";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
