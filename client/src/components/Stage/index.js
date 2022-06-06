@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import GameLoader from "../GameLoader";
 
 import "./style.css";
 
 function Stage() {
+  const Games = {
+    MemoryGame: require("../../games/MemoryGame"),
+    SnakeGame: require("../../games/SnakeGame"),
+  };
+  const [game, setGame] = useState(Games["SnakeGame"]);
+
+  const handleClick = () => {
+    alert("clicked");
+  };
+
   return (
     <>
       <Container fluid id="container">
         <Row>
-          <Col id="game-stage">
-            <h1>Game Stage</h1>
+          <Col sm={8} md={8} lg={8} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
+            <GameLoader game={game} />
           </Col>
-          <Col lg="4">
+
+          <Col sm={4} lg={4}>
             <Container>
               <Container id="my-profile">
                 <Row>
@@ -22,6 +34,23 @@ function Stage() {
               <Container id="favourite-games">
                 <Row>
                   <h1>Favourite Games</h1>
+                  <div
+                    style={{ display: "flex", justifyContent: "space-evenly" }}
+                  >
+                    <button
+                      key={"btnSnake"}
+                      onClick={() => setGame(Games["SnakeGame"])}
+                    >
+                      Snake
+                    </button>
+
+                    <button
+                      key={"btnMemory"}
+                      onClick={() => setGame(Games["MemoryGame"])}
+                    >
+                      Memory
+                    </button>
+                  </div>
                 </Row>
               </Container>
             </Container>

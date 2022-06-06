@@ -1,15 +1,18 @@
 #container {
-    background-color:  black;
-    min-height: 100vh;
+  background-color: black;
+  min-height: 100vh;
 }
 
 #game-stage {
-    background-color: grey;
-    height: 800px;
+  background-color: grey;
+  height: auto;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
 }
 
 #my-profile,
-#favourite-games{
-    background-color: orange;
-    height: 200px;
+#favourite-games {
+  background-color: orange;
+  height: 200px;
 }
