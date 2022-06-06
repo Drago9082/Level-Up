@@ -11,17 +11,15 @@ function Stage() {
   };
   const [game, setGame] = useState(Games["SnakeGame"]);
 
-  const handleClick = () => {
-    alert("clicked");
-  };
-
   return (
     <>
       <Container fluid id="container">
         <Row>
           <Col sm={8} md={8} lg={8} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
-            <GameLoader game={game} />
+            <div id="game-stage-restraints">
+              <GameLoader game={game} />
+            </div>
           </Col>
 
           <Col sm={4} lg={4}>

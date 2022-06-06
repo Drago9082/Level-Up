@@ -9,6 +9,15 @@
   overflow: hidden !important;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+#game-stage-restraints {
+  max-width: 75%;
+  height: auto;
+  display: block;
+  /* margin: auto; */
 }
 
 #my-profile,
