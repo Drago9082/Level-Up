@@ -6,7 +6,7 @@ const LOGIN_URL = '/auth';
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
-    const useRef = useRef();
+    const userRef = useRef();
     const errRef = useRef();
 
 
