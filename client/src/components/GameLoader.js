@@ -3,12 +3,7 @@ import react from "react";
 import ScriptTag from "react-script-tag";
 
 const GameLoader = ({ game }) => {
-  if (game) {
-    let Component = game.default;
-    return <Component />;
-  }
-
-  return <h1>No Game Selected</h1>;
+  return <iframe id="game-container" src="games/snake-game/index.html" />;
 };
 
 export default GameLoader;
