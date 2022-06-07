@@ -17,7 +17,6 @@ function Stage() {
         <Row>
           <Col sm={8} md={8} lg={8} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
-
             <GameLoader game={game} />
           </Col>
 
