@@ -18,7 +18,7 @@ function Stage() {
           <Col sm={8} md={8} lg={8} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
             <div id="game-stage-restraints">
-              <GameLoader game={game} />
+              {/* <GameLoader game={game} /> */}
             </div>
           </Col>
 

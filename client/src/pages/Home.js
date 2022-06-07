@@ -1,11 +1,13 @@
 import React from "react";
 import Stage from "../components/Stage";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Chatroom from "../components/Chatroom";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
   return (
     <>
       <Stage />
+      <Chatroom />
     </>
   );
 };
