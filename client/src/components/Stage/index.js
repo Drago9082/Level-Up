@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import GameLoader from "../GameLoader";
 
@@ -17,9 +17,7 @@ function Stage() {
         <Row>
           <Col sm={8} md={8} lg={8} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
-            <div id="game-stage-restraints">
-              {/* <GameLoader game={game} /> */}
-            </div>
+            <GameLoader game={game} />
           </Col>
 
           <Col sm={4} lg={4}>
