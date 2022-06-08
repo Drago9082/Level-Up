@@ -47,3 +47,5 @@ db.once("open", () => {
     console.log(`API server running on port ${PORT}!`);
   });
 });
+
+console.log(process.env.MONGODB_URI);
