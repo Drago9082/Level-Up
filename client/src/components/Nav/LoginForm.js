@@ -41,6 +41,7 @@ function LoginForm() {
         />
         <input
           type="password"
+          authContext
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}

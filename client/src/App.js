@@ -11,6 +11,22 @@ import globalContext from "./contexts/globalContext";
 //need this to set cookies
 axios.defaults.withCredentials = true;
 
+axios.interceptors.request.use(
+  function (config) {
+    // Update token before most requests
+    const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+
+    if (!config || !config.url) return;
+    if (!config.url.startsWith("http")) config.url = baseUrl + config.url;
+
+    return config;
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  }
+);
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(undefined);
   const [user, setUser] = userState({});
