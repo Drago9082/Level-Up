@@ -1,8 +1,5 @@
 const {Schema, model} = require('mongoose')
-const Games = require('./Game');
-
-const bcrypt = require('bcrypt');
-
+const Game = require('./Game');
 
 const userSchema = new Schema({
   userName: {
@@ -14,10 +11,9 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  password: {
+  pwHashed: {
     type: String,
-    required: true,
-    minlength: 5
+    required: true
   },
   games: [
     {

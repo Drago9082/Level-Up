@@ -4,6 +4,11 @@ const express = require("express");
 const db = require("./config/connection");
 const routes = require("./routes");
 const socketio = require("socket.io");
+const dotenv = require('dotenv');
+const cookieParser=require("cookie-parser");
+const cors = require('cors')
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,6 +18,11 @@ const io = socketio(server);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
+app.use(cookieParser());
+app.use(cors({
+  origin:['http://localhost:3000'],
+  credentials:true
+}));
 app.use(routes);
 
 io.on("connection", (socket) => {
