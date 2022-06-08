@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
+
 import globalContext from "../../context/globalContext";
 import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const { getLogged, user, setUser } = useContext(globalContext);
 
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ function LoginForm() {
         email,
         password,
       };
+
       let user = await axios.post("/api/user/login", userLoginData);
       //watch the frick out if you dont pass validation on the password it just fails..
       setUser(user);
@@ -41,7 +44,6 @@ function LoginForm() {
         />
         <input
           type="password"
-          authContext
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}

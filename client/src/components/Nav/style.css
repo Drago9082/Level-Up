@@ -1,0 +1,15 @@
+#user-buttons {
+    position: absolute;
+    right: 2.5rem;
+    top: 10px
+}
+#modal-buttons {
+    border-radius: 0px;
+    background-color: orange;
+    border: 0;
+    color: black;
+    margin-left: 2rem;
+}
+#modal-buttons:focus {
+    border: 5px solid rgb(161, 105, 0);
+}
