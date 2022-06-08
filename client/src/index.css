@@ -16,6 +16,7 @@
 html,
 body {
   min-height: 100%;
+  background-color: #181818;
 }
 
 body {
@@ -79,9 +80,7 @@ a:hover {
   text-decoration: underline;
 }
 
-header {
-  background: var(--primary);
-}
+
 
 header a {
   color: var(--light);
