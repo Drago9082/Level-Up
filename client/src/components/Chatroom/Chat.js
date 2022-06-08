@@ -45,7 +45,9 @@ function Chat({ socket, username }) {
       <div className="chat-window" style={{ height: chatHidden ? 45 : 420 }}>
         <div className="chat-header">
           <p>
-            <button onClick={handleChat}>Chat Room</button>
+            <button id="show-chat-btn" onClick={handleChat}>
+              Chat Room
+            </button>
           </p>
         </div>
         <div
@@ -82,12 +84,15 @@ function Chat({ socket, username }) {
             <input
               type="text"
               value={currentMessage}
+              placeholder="Send a message"
               onChange={handleMessageChange}
               onKeyPress={(event) => {
                 event.key === "Enter" && sendMessage();
               }}
             />
-            <button onClick={sendMessage}>Send</button>
+            <button id="send-msg-btn" onClick={sendMessage}>
+              Send
+            </button>
           </div>
         </div>
       </div>

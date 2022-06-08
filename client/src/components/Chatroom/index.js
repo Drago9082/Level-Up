@@ -7,7 +7,7 @@ const socket = io.connect("localhost:3000");
 function Chatroom() {
   const room = "levelup";
   const [username, setUsername] = useState("");
-  const [showChat, setShowChat] = useState(false);
+  const [showChat, setShowChat] = useState(true);
   const joinChat = () => {
     if (username !== "") {
       socket.emit("join_room", room);
