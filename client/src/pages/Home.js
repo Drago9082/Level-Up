@@ -3,7 +3,6 @@ import Stage from "../components/Stage";
 import Chatroom from "../components/Chatroom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
-import Login from "../components/Login";
 
 
 const Home = () => {
@@ -11,8 +10,6 @@ const Home = () => {
     <>
       <Stage />
       <Chatroom />
-      <Login />
-
     </>
   );
 };

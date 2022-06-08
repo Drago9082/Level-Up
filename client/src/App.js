@@ -1,24 +1,19 @@
 import React from "react";
+import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { setContext } from "@apollo/client/link/context";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import { AuthContext } from './context/Auth.js';
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    },
-  };
-});
+//need this to set cookies
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
+    //We set the router in the authContext to provide context...
+    <AuthContext>
       <Router>
         <Nav />
         <Routes>
@@ -26,7 +21,9 @@ function App() {
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>
+ </AuthContext>
   );
 }
 
 export default App;
+
