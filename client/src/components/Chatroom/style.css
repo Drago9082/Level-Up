@@ -2,7 +2,8 @@
     width: 500px;
     position: fixed;
     bottom: 0;
-    right: 2rem;
+    right: 2%;
+    transition: height 200ms;
   }
   
   .chat-window p {
@@ -85,23 +86,25 @@
     border: 0;
     padding: 0 0.7em;
     font-size: 1em;
-    border-right: 1px dotted #607d8b;
-  
+    border-radius: 0;
     outline: none;
     font-family: "Open Sans", sans-serif;
   }
   
   .chat-window .chat-footer button {
-    border: 0;
+   background-color: orange;
     cursor: pointer;
-    background-color: rgb(16, 139, 255);
-    outline: none;
   }
   
   .chat-window .chat-footer button:hover {
-    background-color: rgb(31, 97, 197);
+    background-color: rgb(218, 141, 0);
   }
   .hide {
     opacity: 0 !important;
   }
 
+#show-chat-btn{ 
+  background: transparent;
+  color: white;
+  min-width: 100%;;
+}

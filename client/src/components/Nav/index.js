@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import LoginForm from './LoginForm'
+import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
-
+import "./style.css";
 
 function Nav() {
   const [showReg, setShowReg] = useState(false);
@@ -16,7 +16,6 @@ function Nav() {
   const handleCloseLog = () => setShowLog(false);
   const handleShowLog = () => setShowLog(true);
 
-
   return (
     <header className="flex-row px-1">
       <h1>
@@ -25,48 +24,48 @@ function Nav() {
         </Link>
       </h1>
       <nav>
-      <Button variant="primary" onClick={handleShowReg}>
-        Register
-      </Button>
-
-      <Modal show={showReg} onHide={handleCloseReg}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <RegisterForm/>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseReg}>
-            Close
+        <div id="user-buttons">
+          <Button onClick={handleShowReg} id="modal-buttons">
+            Register
           </Button>
-          <Button variant="primary" onClick={handleCloseReg}>
-            Save Changes
+          <Button onClick={handleShowLog} id="modal-buttons">
+            Login
           </Button>
-        </Modal.Footer>
-      </Modal>
+        </div>
 
-      <Button variant="primary" onClick={handleShowLog}>
-        Login
-      </Button>
+        <Modal show={showReg} onHide={handleCloseReg}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <RegisterForm />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseReg}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleCloseReg}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
-      <Modal show={showLog} onHide={handleCloseLog}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <LoginForm />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseLog}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleCloseLog}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
+        <Modal show={showLog} onHide={handleCloseLog}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <LoginForm />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseLog}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleCloseLog}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </nav>
     </header>
   );
