@@ -33,22 +33,7 @@ function Nav() {
           </Button>
         </div>
 
-        <Modal show={showReg} onHide={handleCloseReg}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <RegisterForm />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseReg}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleCloseReg}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        <RegisterForm show={showReg} onHide={handleCloseReg} />
 
         <Modal show={showLog} onHide={handleCloseLog}>
           <Modal.Header closeButton>
