@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import { AuthContext } from "./context/Auth.js";
-import globalContext from "./contexts/globalContext";
+// import { AuthContext } from "./context/Auth.js";
+import globalContext from "./context/globalContext";
 
 //need this to set cookies
 axios.defaults.withCredentials = true;
@@ -29,7 +29,7 @@ axios.interceptors.request.use(
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(undefined);
-  const [user, setUser] = userState({});
+  const [user, setUser] = useState({});
 
   async function getLogged() {
     const loggedResponse = await axios.get("/api/user/loggedIn");
