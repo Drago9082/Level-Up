@@ -42,7 +42,9 @@ function App() {
 
   return (
     //We set the router in the authContext to provide context...
-    <globalContext.Provider value={{ loggedIn, setLoggedIn, user, setUser }}>
+    <globalContext.Provider
+      value={{ loggedIn, getLogged, setLoggedIn, user, setUser }}
+    >
       <Router>
         <Nav />
         <Routes>

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import GameLoader from "../GameLoader";
+import globalContext from "../../context/globalContext";
 
 import "./style.css";
 
 function Stage() {
+  const { user } = useContext(globalContext);
   const Games = {
     MemoryGame: require("../../games/MemoryGame"),
     SnakeGame: require("../../games/SnakeGame"),
@@ -24,7 +26,7 @@ function Stage() {
             <Container>
               <Container id="my-profile">
                 <Row>
-                  <h1>My Profile</h1>
+                  <h1>{`${user.userName ? user.userName : "My"} Profile`}</h1>
                 </Row>
               </Container>
               <Container id="favourite-games">
