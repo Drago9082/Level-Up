@@ -4,17 +4,29 @@ const router = require('express').Router();
 
 const {
     getSingleUserById,
-    createUser,
+    signUp,
     updateUser,
     deleteUser,
     addGame,
-    getSingleUserByName
+    getSingleUserByName,
+    logIn,
+    logOut,
+    loggedIn
 } = require("../../controllers/userController");
 
 //api/user
 //creates user
-router.route('/')
-.post(createUser);
+router.route('/signup')
+.post(signUp);
+
+router.route('/login')
+.post(logIn);
+
+router.route('/logout')
+.get(logOut);
+
+router.route('/loggedIn')
+.post(loggedIn);
 //api/user/:userId
 //gets user by id, udates users by id, delete user by id
 router.route('/:userId')
