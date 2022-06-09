@@ -16,19 +16,20 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 app.use(express.urlencoded({ extended: true }));
-app.use('/', express.static(path.join(__dirname, "client/build", 'index.html')));
+app.use(
+  "/",
+  express.static(path.join(__dirname, "client/build", "index.html"))
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
+    secure: true,
+    origin: [process.env.REACT_APP_BASE_URL || "http://localhost:3000"],
   })
 );
 app.use(routes);
-
-
-
-
 
 io.on("connection", (socket) => {
   console.log(socket.id);
