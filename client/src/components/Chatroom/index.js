@@ -11,7 +11,9 @@ function Chatroom() {
   const [username, setUsername] = useState("");
   const [showChat, setShowChat] = useState(false);
   const joinChat = () => {};
+
   console.log(user);
+
   useEffect(() => {
     setUsername(user.userName);
     console.log(user.userName);
