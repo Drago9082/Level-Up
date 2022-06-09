@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import { Presentation } from "./pages/Presentation";
+import Presentation from "./pages/Presentation";
 // import { AuthContext } from "./context/Auth.js";
 import globalContext from "./context/globalContext";
 
