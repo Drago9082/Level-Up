@@ -1,9 +1,9 @@
 import * as React from "react";
 import Reveal from 'reveal.js';
 
-import '../../styles/reveal.js/reset.css';
-import '../../styles/reveal.js/reveal.css';
-import '../../styles/reveal.js/theme/black.css';
+import 'reveal.js/dist/reset.css';
+import 'reveal.js/dist/reveal.css';
+import 'reveal.js/dist/theme/black.css';
 
 export function Presentation() {
 
@@ -55,3 +55,5 @@ export function Presentation() {
 		</div>
     );
 }
+
+export default Presentation;
