@@ -36,7 +36,6 @@ function RegisterForm(props) {
         position: "centered",
       }}
     >
-
       <Modal.Header id="modal-header">
         <Modal.Title id="modal-title">
           <p id="modal-title-p">Register a new account</p>
