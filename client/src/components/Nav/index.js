@@ -41,9 +41,9 @@ function Nav() {
       </h1>
 
       <nav>
-        <a href="/presentation">
+        {/* <a href="/presentation">
           <button id="present-btn">View Presentation</button>
-        </a>
+        </a> */}
         {!loggedIn ? (
           <div id="user-buttons">
             <button onClick={handleShowReg} id="modal-buttons">
