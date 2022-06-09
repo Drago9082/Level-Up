@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import globalContext from "../../context/globalContext";
 import { useNavigate } from "react-router-dom";
-import { Button, CloseButton, Modal } from "react-bootstrap";
+import { Button, Modal, CloseButton } from "react-bootstrap";
+import "./style.css";
+
 
 function RegisterForm(props) {
   const [userName, setUserName] = useState("");
@@ -31,22 +33,29 @@ function RegisterForm(props) {
     }
   }
   return (
-    <Modal centered {...props}>
-      <Modal.Header>
-        <Modal.Title>
-          <p>Register a new account</p>
+
+    <Modal
+      {...props}
+      style={{
+        position: "centered",
+      }}
+    >
+      <Modal.Header id ="modal-header">
+        <Modal.Title id ="modal-title">
+          <p id ="modal-title-p">Register a new account</p>
         </Modal.Title>
-        <CloseButton variant="white" />
+        <CloseButton variant='white'/>
+
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body id ="modal-body">
         <form onSubmit={register}>
-          <input
+          <input  id="form-fields"
             type="name"
             placeholder="User Name"
             onChange={(e) => setUserName(e.target.value)}
             value={userName}
           />
-          <input
+          <input id="form-fields"
             type="email"
             placeholder="Email"
             //when a letter is put in as an email
@@ -54,19 +63,19 @@ function RegisterForm(props) {
             //it respons by changing the value to what ever has been put in so far
             value={email}
           />
-          <input
+          <input id="form-fields"
             type="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
-          <input
+          <input id="form-fields"
             type="password"
             placeholder="Verify your password"
             onChange={(e) => setPasswordVerify(e.target.value)}
             value={passwordVerify}
           />
-          <button type="submit">Register</button>
+          <button id = "submitBtn" type="submit">Register</button>
         </form>
       </Modal.Body>
     </Modal>

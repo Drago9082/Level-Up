@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, CloseButton } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
@@ -32,19 +32,17 @@ function Nav() {
         </div>
         <RegisterForm show={showReg} onHide={handleCloseReg} />
 
-        <Modal show={showLog} onHide={handleCloseLog}>
-          <Modal.Header closeButton>
+        <Modal id ="modal-header" show={showLog} onHide={handleCloseLog}>
+          <Modal.Header id ="modal-title">
             <Modal.Title>Modal heading</Modal.Title>
+            <CloseButton variant='white'/>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body  id ="modal-body">
             <LoginForm />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseLog}>
               Close
-            </Button>
-            <Button variant="primary" onClick={handleCloseLog}>
-              Save Changes
             </Button>
           </Modal.Footer>
         </Modal>
