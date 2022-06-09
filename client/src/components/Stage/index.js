@@ -4,6 +4,7 @@ import GameLoader from "../GameLoader";
 import globalContext from "../../context/globalContext";
 import uuid from "react-uuid";
 import shuffle from "../../helpers/shuffle";
+import profilePicture from "../../assets/profilepicture.png";
 
 import "./style.css";
 
@@ -25,36 +26,45 @@ function Stage() {
     <>
       <Container fluid id="container">
         <Row>
-          <Col sm={9} md={9} lg={9} id="game-stage">
+          <Col
+            sm={loggedIn ? 9 : 12}
+            md={loggedIn ? 9 : 12}
+            lg={loggedIn ? 9 : 12}
+            id="game-stage"
+          >
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
             <GameLoader id="game-loader" game={Games[game]} />
           </Col>
 
-          <Col sm={3} lg={3}>
-            <Container id="sidebar-container">
-              {loggedIn ? (
+          {loggedIn ? (
+            <Col sm={3} lg={3}>
+              <Container id="sidebar-container">
                 <Container id="my-profile">
                   <Row>
-                    <h2>{`${user.userName ? user.userName : "My"} Profile`}</h2>
+                    <img id="pfp" src={profilePicture}></img>
+                    <h2>{`${user.userName}'s Profile`}</h2>
+                    <button id="profile-btns">View Profile</button>
+                    <button id="profile-btns">Edit Profile</button>
                   </Row>
                 </Container>
-              ) : (
-                <Container id="my-profile">
+                <Container id="favourite-games">
                   <Row>
-                    <h2>LOG IN TO VIEW YOUR ACCOUNT</h2>
+                    <h2>Favourite Games</h2>
                   </Row>
                 </Container>
-              )}
-              <Container id="favourite-games">
-                <Row>
-                  <h2>Favourite Games</h2>
-                </Row>
               </Container>
-            </Container>
-          </Col>
+            </Col>
+          ) : (
+            <></>
+          )}
         </Row>
         <Row>
-          <Col sm={9} md={9} lg={9} id="game-list">
+          <Col
+            sm={loggedIn ? 9 : 12}
+            md={loggedIn ? 9 : 12}
+            lg={loggedIn ? 9 : 12}
+            id="game-list"
+          >
             {Games.map((g, i) => (
               <GameIcon
                 key={uuid()}
