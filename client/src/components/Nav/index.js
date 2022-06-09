@@ -3,7 +3,6 @@ import globalContext from "../../context/globalContext";
 import { Button, Modal, CloseButton } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-import globalContext from "../../context/globalContext";
 import LoggedOutNav from "./LoggedOutNav";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
