@@ -44,6 +44,8 @@
   background-size: cover;
   margin: 1rem;
   overflow: hidden;
+  -webkit-box-shadow: 0px 0px 30px 0px #000000; 
+box-shadow: 0px 0px 30px 0px #000000;
 }
 
 .game-icon p {

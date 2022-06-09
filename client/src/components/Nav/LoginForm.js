@@ -34,10 +34,9 @@ function LoginForm() {
   }
   return (
     <div>
-
       <form onSubmit={login}>
         <input
-        id="form-fields"
+          id="form-fields"
           type="email"
           placeholder="Email"
           //when a letter is put in as an email
@@ -46,13 +45,15 @@ function LoginForm() {
           value={email}
         />
         <input
-        id="form-fields"
+          id="form-fields"
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <button id = "submitBtn" type="submit">Login</button>
+        <button id="submitBtn" type="submit">
+          Login
+        </button>
         {/* <button id = "forgotPasswordBtn" type="submit">Forgot Password?</button> */}
       </form>
     </div>
