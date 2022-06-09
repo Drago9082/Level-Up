@@ -22,12 +22,12 @@ function Stage() {
     <>
       <Container fluid id="container">
         <Row>
-          <Col sm={8} md={8} lg={8} id="game-stage">
+          <Col sm={9} md={9} lg={9} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
             <GameLoader id="game-loader" game={Games[game]} />
           </Col>
 
-          <Col sm={4} lg={4}>
+          <Col sm={3} lg={3}>
             <Container id="sidebar-container">
               <Container id="my-profile">
                 <Row>
@@ -43,7 +43,7 @@ function Stage() {
           </Col>
         </Row>
         <Row>
-          <Col sm={8} md={8} lg={8} id="game-list">
+          <Col sm={9} md={9} lg={9} id="game-list">
             {Games.map((g, i) => (
               <GameIcon
                 key={uuid()}
