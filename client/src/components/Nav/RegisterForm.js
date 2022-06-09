@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import globalContext from "../../context/globalContext";
 import { useNavigate } from "react-router-dom";
-import { Button, Modal } from "react-bootstrap";
+import { Button, CloseButton, Modal } from "react-bootstrap";
 
 function RegisterForm(props) {
   const [userName, setUserName] = useState("");
@@ -31,19 +31,12 @@ function RegisterForm(props) {
     }
   }
   return (
-    <Modal
-      {...props}
-      style={{
-        position: "fixed",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      <Modal.Header closeButton>
+    <Modal centered {...props}>
+      <Modal.Header>
         <Modal.Title>
           <p>Register a new account</p>
         </Modal.Title>
+        <CloseButton variant="white" />
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={register}>
