@@ -19,6 +19,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 0.25rem;
+  overflow: hidden;
 }
 
 #game-list {
@@ -76,6 +77,7 @@
   color: white;
   font-family: "VT323", monospace;
   border-radius: 0.25rem;
+  display: flex;
 }
 #favourite-games {
   margin-top: 1rem;
@@ -85,11 +87,31 @@
   padding: 0;
   padding-top: 1rem;
   height: 50%;
-  background-color: #ff8800;
+  background-color: rgba(255, 166, 0, 0.5);
   width: 85%;
   justify-content: center;
   border-radius: 0.25rem;
 }
 h2 {
   font-family: "VT323", monospace;
+}
+#pfp{
+  height: 75px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+.row{
+  flex-wrap: nowrap;
+  width: 100%;
+}
+#profile-btns{
+  height: 2rem;
+  width: 9rem;
+  position: absolute;
+  top: 16.5rem;
+}
+#profile-btns:last-child{
+  right: 6rem;
 }

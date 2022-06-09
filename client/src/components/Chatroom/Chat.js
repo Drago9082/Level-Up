@@ -28,7 +28,6 @@ function Chat({ socket, username }) {
 
   const handleChat = () => {
     setChatHidden(!chatHidden);
-    console.log(chatHidden);
   };
 
   useEffect(() => {

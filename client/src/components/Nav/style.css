@@ -93,7 +93,25 @@ header{
 }
 
 
+
 .modal-content{
     border-color: #181818;
     border-radius: 700px;
+
+}
+#present-btn{
+    position: absolute;
+    top: 1.5rem;
+    right: 25%;
+    border-radius: 0px;
+    background-color: #ff8800;
+    border: 0;
+    color: #181818;
+    margin-right: 2rem;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    line-height: 2rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+
 }

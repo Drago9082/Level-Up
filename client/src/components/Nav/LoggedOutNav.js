@@ -9,15 +9,13 @@ import "./style.css";
 const LoggedOutNav = () => {
 
     const [showReg, setShowReg] = useState(false);
-
     const handleCloseReg = () => setShowReg(false);
     const handleShowReg = () => setShowReg(true);
-
+  
     const [showLog, setShowLog] = useState(false);
-
+  
     const handleCloseLog = () => setShowLog(false);
     const handleShowLog = () => setShowLog(true);
-
 
   return (
     <nav>
@@ -40,4 +38,6 @@ const LoggedOutNav = () => {
   );
 };
 
+
 export default LoggedOutNav;
+
