@@ -29,12 +29,24 @@ axios.interceptors.request.use(
 );
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(undefined);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
   async function getLogged() {
-    const loggedResponse = await axios.get("/api/user/loggedIn");
-    setLoggedIn(loggedResponse.data);
+    try {
+      const loggedResponse = await axios.get("/api/user/loggedIn");
+      if (loggedResponse) {
+        const currentUserId = loggedResponse.data.user;
+        const currentUser = await axios.get(
+          `/api/user/getUserName/${currentUserId}`
+        );
+        console.log(currentUser);
+        setUser(currentUser.data);
+      }
+      setLoggedIn(loggedResponse.data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   useEffect(() => {

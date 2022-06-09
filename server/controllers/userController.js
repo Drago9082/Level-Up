@@ -91,7 +91,7 @@ module.exports = {
         .cookie("token", token, {
           httpOnly: true,
           secure: true,
-          sameSite:"none"
+          sameSite: "none",
         })
         .send();
     } catch (error) {
@@ -189,7 +189,7 @@ module.exports = {
         .cookie("token", token, {
           httpOnly: true,
           secure: true,
-          sameSite: 'none'
+          sameSite: "none",
         })
         .send({ _id, email, userName, games });
     } catch (err) {
@@ -203,11 +203,11 @@ module.exports = {
       if (!authToken) {
         return res.json(false);
       }
-      jwt.verify(authToken, process.env.JWT_SECRETPASS);
-      res.send(true);
+      const thisResponse = jwt.verify(authToken, process.env.JWT_SECRETPASS);
+      res.send(thisResponse);
     } catch (err) {
       console.log(err);
-      res.json(false);
+      res.json(err);
     }
   },
   logOut(req, res) {
@@ -215,9 +215,28 @@ module.exports = {
       .cookie("token", "", {
         httpOnly: true,
         secure: true,
-        sameSite: 'none',
+        sameSite: "none",
         expires: new Date(0),
       })
       .send();
+  },
+  async getUserName(req, res) {
+    try {
+      const authToken = req.cookies.token;
+      if (!authToken) {
+        return res.json(false);
+      }
+      await User.findOne({ _id: req.params.userId })
+        .select("-__v")
+        .then((user) => {
+          if (!user) {
+            return res.status(404).json({ message: "Could not find the user" });
+          }
+          res.json(user);
+        });
+    } catch (err) {
+      console.log(err);
+      res.json(false);
+    }
   },
 };

@@ -40,7 +40,6 @@ function RegisterForm(props) {
       <Modal.Header id ="modal-header">
         <Modal.Title id ="modal-title-reg">
         Register a new account
-        <CloseButton variant="white" />
         </Modal.Title>
 
       </Modal.Header>

@@ -7,11 +7,10 @@ import shuffle from "../../helpers/shuffle";
 import profilePicture from "../../assets/profilepicture.png";
 import gameList from "../../helpers/gameList";
 
-
 import "./style.css";
 
 function Stage() {
-  const { user, loggedIn } = useContext(globalContext);
+  const { user, loggedIn, setLoggedIn } = useContext(globalContext);
   const [Games, setGames] = useState(gameList);
   const [game, setGame] = useState(0);
 

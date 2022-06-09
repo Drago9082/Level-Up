@@ -19,17 +19,11 @@ function Chatroom() {
   useEffect(() => {
     setUsername(user.userName);
     console.log(user.userName);
-    if (username !== "") {
+    if (username !== "" && username !== undefined) {
       socket.emit("join_room", room);
       setShowChat(true);
     }
-
-    if (username === "") {
-      setUsername(user.userName);
-      socket.emit("join_room", room);
-      setShowChat(true);
-    }
-  });
+  }, [user]);
   const handleUserNameChange = (event) => {
     setUsername(event.target.value);
   };

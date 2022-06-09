@@ -10,7 +10,6 @@ import axios from "axios";
 import "./style.css";
 
 function Nav() {
-
   const { user, loggedIn, setLoggedIn } = useContext(globalContext);
   const [showReg, setShowReg] = useState(false);
 
@@ -25,6 +24,7 @@ function Nav() {
     try {
       setLoggedIn(false);
       await axios.get("/api/user/logout");
+      window.location = "/";
     } catch (err) {
       console.error(err);
     }
@@ -45,43 +45,33 @@ function Nav() {
           <button id="present-btn">View Presentation</button>
         </a> */}
         {!loggedIn ? (
-          <div id="user-buttons">
-            <button onClick={handleShowReg} id="modal-buttons">
-              Register
-            </button>
-            <button onClick={handleShowLog} id="modal-buttons">
-              Login
-            </button>
-          </div>
+          <LoggedOutNav />
         ) : (
+          // <div id="user-buttons">
+          //   <button onClick={handleShowReg} id="modal-buttons">
+          //     Register
+          //   </button>
+          //   <button onClick={handleShowLog} id="modal-buttons">
+          //     Login
+          //   </button>
+          // </div>
           <div id="user-buttons">
             <button onClick={handleLogout} id="modal-buttons">
               Log Out
             </button>
           </div>
         )}
-        <RegisterForm
+        {/* <RegisterForm
           show={showReg}
           onHide={handleCloseReg}
           setShowReg={setShowReg}
         />
-
-        <Modal id="modal-header" show={showLog} onHide={handleCloseLog}>
-          <Modal.Header id="modal-title">
-            <Modal.Title>Modal heading</Modal.Title>
-            <CloseButton variant="white" />
-          </Modal.Header>
-          <Modal.Body id="modal-body">
-            <LoginForm />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseLog}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        <LoginForm
+          show={showLog}
+          onHide={handleCloseLog}
+          setShowReg={setShowLog}
+        /> */}
       </nav>
-
     </header>
   );
 }
