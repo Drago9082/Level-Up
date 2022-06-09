@@ -16,9 +16,7 @@ function Stage() {
       author: "",
     },
   ];
-  const [game, setGame] = useState(Games[0]);
-
-  const handleSetGame = (i) => setGame(Games[i]);
+  const [game, setGame] = useState(0);
 
   return (
     <>
@@ -26,7 +24,7 @@ function Stage() {
         <Row>
           <Col sm={8} md={8} lg={8} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
-            <GameLoader id="game-loader" game={game} />
+            <GameLoader id="game-loader" game={Games[game]} />
           </Col>
 
           <Col sm={4} lg={4}>
@@ -51,7 +49,8 @@ function Stage() {
                 key={uuid()}
                 game={g}
                 index={i}
-                setGame={handleSetGame}
+                setGame={setGame}
+                currentGame={game}
               />
             ))}
           </Col>
@@ -61,12 +60,15 @@ function Stage() {
   );
 }
 
-const GameIcon = ({ game, index, setGame }) => {
+const GameIcon = ({ game, index, currentGame, setGame }) => {
   const { path, name, author } = game;
   return (
     <div
       className="game-icon"
-      style={{ backgroundImage: `url(games/${path}/icon.png)` }}
+      style={{
+        backgroundImage: `url(games/${path}/icon.png)`,
+        borderColor: index === currentGame ? "#ff8800" : "#333",
+      }}
       onClick={() => setGame(index)}
     ></div>
   );
