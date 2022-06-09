@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { io } from "socket.io-client";
 import Chat from "./Chat";
+import globalContext from "../../context/globalContext";
 import "./style.css";
 const socket = io.connect("localhost:3000");
 
 function Chatroom() {
+  const { user } = useContext(globalContext)
   const room = "levelup";
   const [username, setUsername] = useState("");
   const [showChat, setShowChat] = useState(false);
   const joinChat = () => {
     if (username !== "") {
+      socket.emit("join_room", room);
+      setShowChat(true);
+    }
+    if(username === ""){
+      setUsername(user.userName)
       socket.emit("join_room", room);
       setShowChat(true);
     }

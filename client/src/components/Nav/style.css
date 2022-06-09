@@ -53,13 +53,18 @@ header{
     border-top-right-radius: .5rem;
 
 }
-#modal-title{
+#modal-title-reg{
     background-color: #181818;
+    margin-left: 110px;
+    
 }
-#modal-title-p{
+#modal-title-log{
     background-color: #181818;
-    margin-left: 142px;
+    margin-left: 190px;
+    font-size: 30px;
+    
 }
+
 #modal-body{
     background-color: #404040;
     border-bottom-left-radius: .5rem;
@@ -80,8 +85,15 @@ header{
     margin-left: 190px;
     margin-top: 1px;
 }
+#forgotPasswordBtn{
+    background-color: #00000000;
+    color: #ff8800;
+    margin-top:1px;
+
+}
+
 
 .modal-content{
     border-color: #181818;
-    border-radius: 510px;
+    border-radius: 700px;
 }
