@@ -12,7 +12,7 @@ function Stage() {
     { path: "snake-game", name: "Snake", author: "" },
     {
       path: "hangman",
-      name: "Snake",
+      name: "Hangman",
       author: "",
     },
   ];
@@ -62,15 +62,22 @@ function Stage() {
 
 const GameIcon = ({ game, index, currentGame, setGame }) => {
   const { path, name, author } = game;
+  const highlightColor = index === currentGame ? "#ff8800" : "#333";
   return (
     <div
       className="game-icon"
       style={{
-        backgroundImage: `url(games/${path}/icon.png)`,
-        borderColor: index === currentGame ? "#ff8800" : "#333",
+        borderColor: highlightColor,
       }}
       onClick={() => setGame(index)}
-    ></div>
+    >
+      <p style={{ background: highlightColor }}>{name}</p>
+      <div
+        style={{
+          backgroundImage: `url(games/${path}/icon.png)`,
+        }}
+      ></div>
+    </div>
   );
 };
 export default Stage;

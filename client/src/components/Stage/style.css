@@ -36,8 +36,22 @@
   width: 12rem;
   border: 3px solid #333;
   border-radius: 0.5rem;
-  background-size: cover;
   margin: 1rem;
+  overflow: hidden;
+}
+
+.game-icon p {
+  height: 2rem;
+  color: black;
+  background-color: #ff8800;
+  text-align: center;
+  margin: 0;
+  user-select: none;
+}
+
+.game-icon div {
+  height: 8rem;
+  background-size: cover;
 }
 
 #game-container {
