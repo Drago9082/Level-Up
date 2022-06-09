@@ -68,7 +68,7 @@ function Nav() {
 
         <Modal id="modal-header" show={showLog} onHide={handleCloseLog}>
           <Modal.Header id="modal-title">
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Login</Modal.Title>
             <CloseButton variant="white" />
           </Modal.Header>
           <Modal.Body id="modal-body">
