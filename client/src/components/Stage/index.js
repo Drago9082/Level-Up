@@ -8,14 +8,18 @@ import "./style.css";
 function Stage() {
   const { user } = useContext(globalContext);
   const Games = {
-    MemoryGame: require("../../games/MemoryGame"),
+    Snake: {
+      url: "games/snake-game/index.html",
+      name: "Snake",
+      author: "",
+    },
     Hangman: {
       url: "games/hangman/index.html",
       name: "Snake",
       author: "",
     },
   };
-  const [game, setGame] = useState(Games["Hangman"]);
+  const [game, setGame] = useState(Games["Snake"]);
 
   return (
     <>
