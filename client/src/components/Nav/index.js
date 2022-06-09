@@ -27,10 +27,9 @@ function Nav() {
       </h1>
       <nav>
         <div id="user-buttons">
-          <button id="modal-buttons">Register</button>
-          <button id="modal-buttons">Login</button>
+          <button onClick={handleShowReg} id="modal-buttons">Register</button>
+          <button onClick={handleShowLog} id="modal-buttons">Login</button>
         </div>
-        {/* onClick={handleShowReg}onClick={handleShowLog} */}
         <RegisterForm show={showReg} onHide={handleCloseReg} />
 
         <Modal show={showLog} onHide={handleCloseLog}>

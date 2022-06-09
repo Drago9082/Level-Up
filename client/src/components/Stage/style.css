@@ -2,6 +2,8 @@
   padding-top: 2rem;
   padding-left: 2rem;
   background-color: #181818;
+  background-image: url("../../assets/background.gif");
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
