@@ -26,12 +26,16 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  margin-top: 1rem;
 }
 
 .game-icon {
   height: 10rem;
-  width: 10rem;
+  width: 12rem;
   border: 3px solid #ff8800;
+  border-radius: 0.5rem;
+  background-size: cover;
+  margin: 1rem;
 }
 
 #game-container {

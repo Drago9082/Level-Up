@@ -18,6 +18,8 @@ function Stage() {
   ];
   const [game, setGame] = useState(Games[0]);
 
+  const handleSetGame = (i) => setGame(Games[i]);
+
   return (
     <>
       <Container fluid id="container">
@@ -44,8 +46,13 @@ function Stage() {
         </Row>
         <Row>
           <Col sm={8} md={8} lg={8} id="game-list">
-            {Games.map((g) => (
-              <GameIcon key={uuid()} game={g} />
+            {Games.map((g, i) => (
+              <GameIcon
+                key={uuid()}
+                game={g}
+                index={i}
+                setGame={handleSetGame}
+              />
             ))}
           </Col>
         </Row>
@@ -54,12 +61,13 @@ function Stage() {
   );
 }
 
-const GameIcon = ({ game }) => {
+const GameIcon = ({ game, index, setGame }) => {
   const { path, name, author } = game;
   return (
     <div
       className="game-icon"
-      style={{ background: `url(games/${path}/icon.png)` }}
+      style={{ backgroundImage: `url(games/${path}/icon.png)` }}
+      onClick={() => setGame(index)}
     ></div>
   );
 };
