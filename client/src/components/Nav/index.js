@@ -10,6 +10,7 @@ import axios from "axios";
 import "./style.css";
 
 function Nav() {
+
   const { user, loggedIn, setLoggedIn } = useContext(globalContext);
   const [showReg, setShowReg] = useState(false);
 
@@ -28,6 +29,7 @@ function Nav() {
       console.error(err);
     }
   }
+
   return (
     <header className="flex-row px-1">
       <h1>
@@ -37,6 +39,7 @@ function Nav() {
           </h1>
         </Link>
       </h1>
+
       <nav>
         <a href="/presentation">
           <button id="present-btn">View Presentation</button>
@@ -78,6 +81,7 @@ function Nav() {
           </Modal.Footer>
         </Modal>
       </nav>
+
     </header>
   );
 }

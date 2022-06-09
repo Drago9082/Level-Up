@@ -36,11 +36,13 @@ function RegisterForm(props) {
         position: "centered",
       }}
     >
-      <Modal.Header id="modal-header">
-        <Modal.Title id="modal-title">
-          <p id="modal-title-p">Register a new account</p>
-        </Modal.Title>
+
+      <Modal.Header id ="modal-header">
+        <Modal.Title id ="modal-title-reg">
+        Register a new account
         <CloseButton variant="white" />
+        </Modal.Title>
+
       </Modal.Header>
       <Modal.Body id="modal-body">
         <form onSubmit={register}>

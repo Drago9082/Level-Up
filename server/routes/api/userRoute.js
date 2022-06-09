@@ -27,12 +27,12 @@ router.route('/logout')
 
 router.route('/loggedIn')
 .post(loggedIn);
-//api/user/:userId
-//gets user by id, udates users by id, delete user by id
-// router.route('/:userId')
-// .get(getSingleUserById)
-// .put(updateUser)
-// .delete(deleteUser);
+
+router.route('/test')
+.get((req,res)=>{
+    res.status(200).send("Testing Testing You Suck")
+});
+
 
 router.route('/byname/:userName')
 .get(getSingleUserByName)

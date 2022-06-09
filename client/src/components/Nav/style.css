@@ -92,9 +92,12 @@ header{
 
 }
 
+
+
 .modal-content{
     border-color: #181818;
     border-radius: 700px;
+
 }
 #present-btn{
     position: absolute;
@@ -110,4 +113,5 @@ header{
     line-height: 2rem;
     padding: 0.5rem;
     border-radius: 0.25rem;
+
 }
