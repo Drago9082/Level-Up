@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
 import globalContext from "../../context/globalContext";
 import { Button, Modal, CloseButton } from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import globalContext from "../../context/globalContext";
+import LoggedOutNav from "./LoggedOutNav";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import axios from "axios";
@@ -26,7 +29,6 @@ function Nav() {
       console.error(err);
     }
   }
-
   return (
     <header className="flex-row px-1">
       <h1>
