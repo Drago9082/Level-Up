@@ -38,8 +38,48 @@ header{
 #gold{
     color: #ff8800;
 }
-/* .modal{
-    position: fixed;
-    left: 50%;
-    transform: translateX(50%);
-} */
+.modal{
+    /* 4040 ,1818  */
+    color: #ff8800;
+    background-color: #4040406c;
+    position: fixed
+}
+
+#modal-header{
+    background-color: #181818;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+
+}
+#modal-title{
+    background-color: #181818;
+}
+#modal-title-p{
+    background-color: #181818;
+    margin-left: 142px;
+}
+#modal-body{
+    background-color: #404040;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+#form-fields{
+    background-color: #181818;
+    color: #ff8800;
+    padding-left: 20%;
+    margin-left: 121px;
+    margin-top: 1px;
+}
+
+#submitBtn{
+    background-color: #181818;
+    color: #ff8800;
+    margin-left: 190px;
+    margin-top: 1px;
+}
+
+.modal-content{
+    border-color: #181818;
+    border-radius: 510px;
+}
