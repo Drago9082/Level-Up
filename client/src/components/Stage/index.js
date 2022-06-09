@@ -1,21 +1,23 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import GameLoader from "../GameLoader";
 import globalContext from "../../context/globalContext";
 import uuid from "react-uuid";
+import shuffle from "../../helpers/shuffle";
 
 import "./style.css";
 
 function Stage() {
   const { user } = useContext(globalContext);
-  const Games = [
+  const Games = shuffle([
     { path: "snake-game", name: "Snake", author: "" },
     {
       path: "hangman",
       name: "Hangman",
       author: "",
     },
-  ];
+    { path: "color-match", name: "Color Match", author: "" },
+  ]);
   const [game, setGame] = useState(0);
 
   return (
