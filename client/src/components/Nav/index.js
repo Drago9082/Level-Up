@@ -41,9 +41,9 @@ function Nav() {
       </h1>
 
       <nav>
-        {/* <a href="/presentation">
+        <a href="https://drago9082.github.io/Level-Up-Reveal.js/">
           <button id="present-btn">View Presentation</button>
-        </a> */}
+        </a>
         {!loggedIn ? (
           <LoggedOutNav />
         ) : (
