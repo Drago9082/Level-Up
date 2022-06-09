@@ -20,19 +20,17 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <h1>Level Up!</h1>
+          <h1 id="logo">
+            <span id="gold">L</span>evel <span id="gold">U</span>p!
+          </h1>
         </Link>
       </h1>
       <nav>
         <div id="user-buttons">
-          <Button onClick={handleShowReg} id="modal-buttons">
-            Register
-          </Button>
-          <Button onClick={handleShowLog} id="modal-buttons">
-            Login
-          </Button>
+          <button id="modal-buttons">Register</button>
+          <button id="modal-buttons">Login</button>
         </div>
-
+        {/* onClick={handleShowReg}onClick={handleShowLog} */}
         <RegisterForm show={showReg} onHide={handleCloseReg} />
 
         <Modal show={showLog} onHide={handleCloseLog}>

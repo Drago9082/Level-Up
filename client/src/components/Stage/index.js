@@ -23,36 +23,19 @@ function Stage() {
         <Row>
           <Col sm={8} md={8} lg={8} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
-            <GameLoader game={game} />
+            <GameLoader id="game-loader" game={game} />
           </Col>
 
           <Col sm={4} lg={4}>
-            <Container>
+            <Container id="sidebar-container">
               <Container id="my-profile">
                 <Row>
-                  <h1>{`${user.userName ? user.userName : "My"} Profile`}</h1>
+                  <h2>{`${user.userName ? user.userName : "My"} Profile`}</h2>
                 </Row>
               </Container>
               <Container id="favourite-games">
                 <Row>
-                  <h1>Favourite Games</h1>
-                  <div
-                    style={{ display: "flex", justifyContent: "space-evenly" }}
-                  >
-                    <button
-                      key={"btnSnake"}
-                      onClick={() => setGame(Games["SnakeGame"])}
-                    >
-                      Snake
-                    </button>
-
-                    <button
-                      key={"btnMemory"}
-                      onClick={() => setGame(Games["MemoryGame"])}
-                    >
-                      Memory
-                    </button>
-                  </div>
+                  <h2>Favourite Games</h2>
                 </Row>
               </Container>
             </Container>
@@ -64,3 +47,14 @@ function Stage() {
 }
 
 export default Stage;
+{
+  /* <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+  <button key={"btnSnake"} onClick={() => setGame(Games["SnakeGame"])}>
+    Snake
+  </button>
+
+  <button key={"btnMemory"} onClick={() => setGame(Games["MemoryGame"])}>
+    Memory
+  </button>
+</div> */
+}
