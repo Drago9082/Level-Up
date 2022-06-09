@@ -1,21 +1,24 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import GameLoader from "../GameLoader";
 import globalContext from "../../context/globalContext";
 import uuid from "react-uuid";
+import shuffle from "../../helpers/shuffle";
 
 import "./style.css";
 
 function Stage() {
   const { user } = useContext(globalContext);
-  const Games = [
+  const Games = shuffle([
     { path: "snake-game", name: "Snake", author: "" },
     {
       path: "hangman",
-      name: "Snake",
+      name: "Hangman",
       author: "",
     },
-  ];
+    { path: "color-match", name: "Color Match", author: "" },
+    { path: "fruit-ninja", name: "Fruit Ninja", author: "" },
+  ]);
   const [game, setGame] = useState(0);
 
   return (
@@ -62,15 +65,22 @@ function Stage() {
 
 const GameIcon = ({ game, index, currentGame, setGame }) => {
   const { path, name, author } = game;
+  const highlightColor = index === currentGame ? "#ff8800" : "#333";
   return (
     <div
       className="game-icon"
       style={{
-        backgroundImage: `url(games/${path}/icon.png)`,
-        borderColor: index === currentGame ? "#ff8800" : "#333",
+        borderColor: highlightColor,
       }}
       onClick={() => setGame(index)}
-    ></div>
+    >
+      <p style={{ background: highlightColor }}>{name}</p>
+      <div
+        style={{
+          backgroundImage: `url(games/${path}/icon.png)`,
+        }}
+      ></div>
+    </div>
   );
 };
 export default Stage;
