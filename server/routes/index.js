@@ -3,7 +3,7 @@ const apiRoutes = require('./api');
 const path = require('path')
 
 router.use('/api', apiRoutes);
-app.get('*', (req,res) => {
+router.get('*', (req,res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
   })
 
