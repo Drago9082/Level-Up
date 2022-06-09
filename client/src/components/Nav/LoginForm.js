@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
-
 import globalContext from "../../context/globalContext";
 import { useNavigate } from "react-router-dom";
+import { Button, Modal, CloseButton } from "react-bootstrap";
+import "./style.css";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -33,9 +34,10 @@ function LoginForm() {
   }
   return (
     <div>
-      <h1>Login</h1>
+
       <form onSubmit={login}>
         <input
+        id="form-fields"
           type="email"
           placeholder="Email"
           //when a letter is put in as an email
@@ -44,12 +46,14 @@ function LoginForm() {
           value={email}
         />
         <input
+        id="form-fields"
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <button type="submit">Login</button>
+        <button id = "submitBtn" type="submit">Login</button>
+        {/* <button id = "forgotPasswordBtn" type="submit">Forgot Password?</button> */}
       </form>
     </div>
   );

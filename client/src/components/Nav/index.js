@@ -33,18 +33,13 @@ function Nav() {
         <RegisterForm show={showReg} onHide={handleCloseReg} />
 
         <Modal id ="modal-header" show={showLog} onHide={handleCloseLog}>
-          <Modal.Header id ="modal-title">
-            <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Header id ="modal-header">
+            <Modal.Title id ="modal-title-log">Login</Modal.Title>
             <CloseButton variant='white'/>
           </Modal.Header>
           <Modal.Body  id ="modal-body">
             <LoginForm />
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseLog}>
-              Close
-            </Button>
-          </Modal.Footer>
         </Modal>
       </nav>
     </header>
