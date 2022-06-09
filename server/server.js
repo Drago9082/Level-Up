@@ -25,9 +25,7 @@ app.use(
   })
 );
 app.use(routes);
-app.get('*', (req,res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
-})
+
 
 
 
