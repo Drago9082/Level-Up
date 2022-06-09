@@ -2,12 +2,12 @@ import React, { useEffect, useState, useContext } from "react";
 import globalContext from "../../context/globalContext";
 import { io } from "socket.io-client";
 import Chat from "./Chat";
-import globalContext from "../../context/globalContext";
 import "./style.css";
-const socket = io.connect("localhost:3000");
+const socket = io.connect(
+  process.env.REACT_APP_BASE_URL || "http://localhost:3000"
+);
 
 function Chatroom() {
-  const { user } = useContext(globalContext)
   const room = "levelup";
   const { user, loggedIn } = useContext(globalContext);
   const [username, setUsername] = useState("");
@@ -24,12 +24,12 @@ function Chatroom() {
       setShowChat(true);
     }
 
-    if(username === ""){
-      setUsername(user.userName)
+    if (username === "") {
+      setUsername(user.userName);
       socket.emit("join_room", room);
       setShowChat(true);
     }
-  };
+  });
   const handleUserNameChange = (event) => {
     setUsername(event.target.value);
   };
