@@ -1,8 +1,8 @@
 .chat-window {
-    width: 550px;
+    width: 382px;
     position: fixed;
     bottom: 0;
-    right: 2%;
+    right: 45px;
     transition: height 200ms;
   }
   
@@ -48,10 +48,10 @@
   }
   
   .chat-window .chat-body .message .message-content {
-    width: 548px;
+    width: 380px;
     height: auto;
     min-height: 40px;
-    max-width: 548px;
+    max-width: 380px;
     background-color: #404040;
     color: white;
     display: flex;
@@ -99,7 +99,7 @@
   }
   
   .chat-window .chat-footer button:hover {
-    background-color: rgb(218, 141, 0);
+    background-color: rgba(218, 142, 0);
   }
   .hide {
     opacity: 0 !important;

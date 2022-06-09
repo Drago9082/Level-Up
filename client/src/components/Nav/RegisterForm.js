@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Modal, CloseButton } from "react-bootstrap";
 import "./style.css";
 
+
 function RegisterForm(props) {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,6 +33,7 @@ function RegisterForm(props) {
     }
   }
   return (
+
     <Modal
       {...props}
       style={{
@@ -43,6 +45,7 @@ function RegisterForm(props) {
           <p id ="modal-title-p">Register a new account</p>
         </Modal.Title>
         <CloseButton variant='white'/>
+
       </Modal.Header>
       <Modal.Body id ="modal-body">
         <form onSubmit={register}>

@@ -8,11 +8,12 @@
     background-color: #ff8800;
     border: 0;
     color: #181818;
-    margin-left: 2rem;
+    margin-right: 2rem;
     font-family: 'VT323', monospace;
     font-size: 2rem;
     line-height: 2rem;
     padding: 0.5rem;
+    border-radius: 0.25rem;
 }
 #modal-buttons:focus {
     -webkit-box-shadow: 0px 0px 0px 3px #db7500; 
@@ -30,6 +31,7 @@ a:hover{
     margin: 1rem;
     margin-bottom: 0;
     font-family: 'Press Start 2P', cursive;
+    font-size:1.75rem;
 }
 header{
     padding: 1rem;

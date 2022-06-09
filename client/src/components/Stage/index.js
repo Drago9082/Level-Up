@@ -1,33 +1,36 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import GameLoader from "../GameLoader";
 import globalContext from "../../context/globalContext";
 import uuid from "react-uuid";
+import shuffle from "../../helpers/shuffle";
 
 import "./style.css";
 
 function Stage() {
   const { user } = useContext(globalContext);
-  const Games = [
+  const Games = shuffle([
     { path: "snake-game", name: "Snake", author: "" },
     {
       path: "hangman",
-      name: "Snake",
+      name: "Hangman",
       author: "",
     },
-  ];
+    { path: "color-match", name: "Color Match", author: "" },
+    { path: "fruit-ninja", name: "Fruit Ninja", author: "" },
+  ]);
   const [game, setGame] = useState(0);
 
   return (
     <>
       <Container fluid id="container">
         <Row>
-          <Col sm={8} md={8} lg={8} id="game-stage">
+          <Col sm={9} md={9} lg={9} id="game-stage">
             {/* THIS IS WHERE THE GAME COMPONENT WILL GO */}
             <GameLoader id="game-loader" game={Games[game]} />
           </Col>
 
-          <Col sm={4} lg={4}>
+          <Col sm={3} lg={3}>
             <Container id="sidebar-container">
               <Container id="my-profile">
                 <Row>
@@ -43,7 +46,7 @@ function Stage() {
           </Col>
         </Row>
         <Row>
-          <Col sm={8} md={8} lg={8} id="game-list">
+          <Col sm={9} md={9} lg={9} id="game-list">
             {Games.map((g, i) => (
               <GameIcon
                 key={uuid()}
@@ -62,15 +65,22 @@ function Stage() {
 
 const GameIcon = ({ game, index, currentGame, setGame }) => {
   const { path, name, author } = game;
+  const highlightColor = index === currentGame ? "#ff8800" : "#333";
   return (
     <div
       className="game-icon"
       style={{
-        backgroundImage: `url(games/${path}/icon.png)`,
-        borderColor: index === currentGame ? "#ff8800" : "#333",
+        borderColor: highlightColor,
       }}
       onClick={() => setGame(index)}
-    ></div>
+    >
+      <p style={{ background: highlightColor }}>{name}</p>
+      <div
+        style={{
+          backgroundImage: `url(games/${path}/icon.png)`,
+        }}
+      ></div>
+    </div>
   );
 };
 export default Stage;
