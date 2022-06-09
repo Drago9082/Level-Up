@@ -1,9 +1,29 @@
-import react from "react";
+import react, { useRef, useEffect } from "react";
 //import "./style.css";
 import ScriptTag from "react-script-tag";
 
 const GameLoader = ({ game }) => {
-  return <iframe id="game-container" src="games/snake-game/index.html" />;
+  const frameRef = useRef(null);
+  const { path, name, author } = game;
+
+  function resizeIframe() {
+    frameRef.current.style.height =
+      frameRef.current.contentWindow.document.documentElement.scrollHeight +
+      "px";
+    frameRef.current.style.width =
+      frameRef.current.contentWindow.document.documentElement.scrollWidth +
+      "px";
+  }
+  useEffect(() => {}, []);
+
+  return (
+    <iframe
+      ref={frameRef}
+      id="game-container"
+      onLoad={resizeIframe}
+      src={`games/${path}/index.html`}
+    />
+  );
 };
 
 export default GameLoader;
