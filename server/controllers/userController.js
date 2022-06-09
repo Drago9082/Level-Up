@@ -90,6 +90,8 @@ module.exports = {
       res
         .cookie("token", token, {
           httpOnly: true,
+          secure: true,
+          sameSite:"none"
         })
         .send();
     } catch (error) {
@@ -187,6 +189,8 @@ module.exports = {
       res
         .cookie("token", token, {
           httpOnly: true,
+          secure: true,
+          sameSite: 'none'
         })
         .send({ _id, email, userName, games });
     } catch (err) {
@@ -211,6 +215,8 @@ module.exports = {
     res
       .cookie("token", "", {
         httpOnly: true,
+        secure: true,
+        sameSite: 'none',
         expires: new Date(0),
       })
       .send();
