@@ -9,9 +9,13 @@ function Stage() {
   const { user } = useContext(globalContext);
   const Games = {
     MemoryGame: require("../../games/MemoryGame"),
-    SnakeGame: require("../../games/SnakeGame"),
+    Hangman: {
+      url: "games/hangman/index.html",
+      name: "Snake",
+      author: "",
+    },
   };
-  const [game, setGame] = useState(Games["SnakeGame"]);
+  const [game, setGame] = useState(Games["Hangman"]);
 
   return (
     <>

@@ -3,7 +3,8 @@ import react from "react";
 import ScriptTag from "react-script-tag";
 
 const GameLoader = ({ game }) => {
-  return <iframe id="game-container" src="games/snake-game/index.html" />;
+  const { url, name, author } = game;
+  return <iframe id="game-container" src={url} />;
 };
 
 export default GameLoader;
