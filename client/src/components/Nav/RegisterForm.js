@@ -44,7 +44,7 @@ function RegisterForm(props) {
         <Modal.Title id ="modal-title-reg">
         Register a new account
         </Modal.Title>
-        <CloseButton variant='white'/>
+
 
       </Modal.Header>
       <Modal.Body id ="modal-body">

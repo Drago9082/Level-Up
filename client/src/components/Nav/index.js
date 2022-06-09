@@ -1,21 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Modal, CloseButton } from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import globalContext from "../../context/globalContext";
+import LoggedOutNav from "./LoggedOutNav";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import "./style.css";
 
 function Nav() {
-  const [showReg, setShowReg] = useState(false);
-
-  const handleCloseReg = () => setShowReg(false);
-  const handleShowReg = () => setShowReg(true);
-
-  const [showLog, setShowLog] = useState(false);
-
-  const handleCloseLog = () => setShowLog(false);
-  const handleShowLog = () => setShowLog(true);
-
+  const { loggedIn } = useContext(globalContext)
   return (
     <header className="flex-row px-1">
       <h1>
@@ -25,23 +19,7 @@ function Nav() {
           </h1>
         </Link>
       </h1>
-      <nav>
-        <div id="user-buttons">
-          <button onClick={handleShowReg} id="modal-buttons">Register</button>
-          <button onClick={handleShowLog} id="modal-buttons">Login</button>
-        </div>
-        <RegisterForm show={showReg} onHide={handleCloseReg} />
-
-        <Modal id ="modal-header" show={showLog} onHide={handleCloseLog}>
-          <Modal.Header id ="modal-header">
-            <Modal.Title id ="modal-title-log">Login</Modal.Title>
-            <CloseButton variant='white'/>
-          </Modal.Header>
-          <Modal.Body  id ="modal-body">
-            <LoginForm />
-          </Modal.Body>
-        </Modal>
-      </nav>
+      <LoggedOutNav/>
     </header>
   );
 }

@@ -9,7 +9,7 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { getLogged, user, setUser } = useContext(globalContext);
+  const { getLogged, setUser } = useContext(globalContext);
 
   const navigate = useNavigate();
 
