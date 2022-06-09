@@ -6,7 +6,7 @@
 }
 
 #game-stage {
-  background-color: #404040;
+  background-color: #4040407c;
   height: 800px;
   overflow: hidden !important;
   display: flex;
@@ -18,7 +18,7 @@
 }
 
 #game-list {
-  background-color: #404040;
+  background-color: #4040407c;
   height: auto;
   overflow: hidden !important;
   display: flex;
