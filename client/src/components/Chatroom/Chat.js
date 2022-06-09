@@ -1,4 +1,3 @@
-import { nonExecutableDefinitionMessage } from "graphql/validation/rules/ExecutableDefinitions";
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import uuid from "react-uuid";
@@ -6,8 +5,6 @@ function Chat({ socket, username }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const [chatHidden, setChatHidden] = useState(true);
-  let hideunhideStyle = {};
-  let chatwindowStyle = {};
   const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
