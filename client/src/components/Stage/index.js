@@ -8,7 +8,7 @@ import shuffle from "../../helpers/shuffle";
 import "./style.css";
 
 function Stage() {
-  const { user } = useContext(globalContext);
+  const { user, loggedIn } = useContext(globalContext);
   const Games = shuffle([
     { path: "snake-game", name: "Snake", author: "" },
     {
@@ -32,11 +32,19 @@ function Stage() {
 
           <Col sm={3} lg={3}>
             <Container id="sidebar-container">
-              <Container id="my-profile">
-                <Row>
-                  <h2>{`${user.userName ? user.userName : "My"} Profile`}</h2>
-                </Row>
-              </Container>
+              {loggedIn ? (
+                <Container id="my-profile">
+                  <Row>
+                    <h2>{`${user.userName ? user.userName : "My"} Profile`}</h2>
+                  </Row>
+                </Container>
+              ) : (
+                <Container id="my-profile">
+                  <Row>
+                    <h2>LOG IN TO VIEW YOUR ACCOUNT</h2>
+                  </Row>
+                </Container>
+              )}
               <Container id="favourite-games">
                 <Row>
                   <h2>Favourite Games</h2>

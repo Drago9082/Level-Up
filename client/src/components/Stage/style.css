@@ -19,6 +19,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 0.25rem;
+  overflow: hidden;
 }
 
 #game-list {
