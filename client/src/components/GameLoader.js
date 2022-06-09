@@ -4,7 +4,7 @@ import ScriptTag from "react-script-tag";
 
 const GameLoader = ({ game }) => {
   const frameRef = useRef(null);
-  const { url, name, author } = game;
+  const { path, name, author } = game;
 
   function resizeIframe() {
     frameRef.current.style.height =
@@ -21,7 +21,7 @@ const GameLoader = ({ game }) => {
       ref={frameRef}
       id="game-container"
       onLoad={resizeIframe}
-      src={url}
+      src={`games/${path}/index.html`}
     />
   );
 };

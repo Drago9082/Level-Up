@@ -2,24 +2,21 @@ import React, { useEffect, useState, useContext } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import GameLoader from "../GameLoader";
 import globalContext from "../../context/globalContext";
+import uuid from "react-uuid";
 
 import "./style.css";
 
 function Stage() {
   const { user } = useContext(globalContext);
-  const Games = {
-    Snake: {
-      url: "games/snake-game/index.html",
+  const Games = [
+    { path: "snake-game", name: "Snake", author: "" },
+    {
+      path: "hangman",
       name: "Snake",
       author: "",
     },
-    Hangman: {
-      url: "games/hangman/index.html",
-      name: "Snake",
-      author: "",
-    },
-  };
-  const [game, setGame] = useState(Games["Snake"]);
+  ];
+  const [game, setGame] = useState(Games[0]);
 
   return (
     <>
@@ -45,20 +42,25 @@ function Stage() {
             </Container>
           </Col>
         </Row>
+        <Row>
+          <Col sm={8} md={8} lg={8} id="game-list">
+            {Games.map((g) => (
+              <GameIcon key={uuid()} game={g} />
+            ))}
+          </Col>
+        </Row>
       </Container>
     </>
   );
 }
 
+const GameIcon = ({ game }) => {
+  const { path, name, author } = game;
+  return (
+    <div
+      className="game-icon"
+      style={{ background: `url(games/${path}/icon.png)` }}
+    ></div>
+  );
+};
 export default Stage;
-{
-  /* <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-  <button key={"btnSnake"} onClick={() => setGame(Games["SnakeGame"])}>
-    Snake
-  </button>
-
-  <button key={"btnMemory"} onClick={() => setGame(Games["MemoryGame"])}>
-    Memory
-  </button>
-</div> */
-}
