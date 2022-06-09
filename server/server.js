@@ -16,7 +16,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use('/', express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -25,6 +25,9 @@ app.use(
   })
 );
 app.use(routes);
+app.use('*', (req,res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+})
 
 
 
