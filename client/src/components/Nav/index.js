@@ -41,9 +41,9 @@ function Nav() {
       </h1>
 
       <nav>
-        {/* <a href="/presentation">
+        <a href="https://drago9082.github.io/Level-Up-Reveal.js/">
           <button id="present-btn">View Presentation</button>
-        </a> */}
+        </a>
         {!loggedIn ? (
           <div id="user-buttons">
             <button onClick={handleShowReg} id="modal-buttons">
@@ -68,7 +68,7 @@ function Nav() {
 
         <Modal id="modal-header" show={showLog} onHide={handleCloseLog}>
           <Modal.Header id="modal-title">
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Login</Modal.Title>
             <CloseButton variant="white" />
           </Modal.Header>
           <Modal.Body id="modal-body">
