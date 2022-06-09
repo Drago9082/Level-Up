@@ -17,6 +17,7 @@ function Stage() {
       author: "",
     },
     { path: "color-match", name: "Color Match", author: "" },
+    { path: "fruit-ninja", name: "Fruit Ninja", author: "" },
   ]);
   const [game, setGame] = useState(0);
 
