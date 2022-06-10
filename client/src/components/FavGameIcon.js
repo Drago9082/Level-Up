@@ -1,7 +1,6 @@
 import react, { useState, useEffect, useContext } from "react";
 import globalContext from "../context/globalContext";
 import { Star, StarFill } from "react-bootstrap-icons";
-import axios from "axios";
 
 const FavGameIcon = ({ game, index, currentGame, setGame }) => {
   const { user } = useContext(globalContext);
