@@ -16,19 +16,20 @@ function Stage() {
   const { user, loggedIn, setLoggedIn } = useContext(globalContext);
   const [Games, setGames] = useState(gameList);
   const [game, setGame] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getGames = async () => {
     let { data } = await axios.get("/api/game");
-    console.log(data);
-    return data;
+    console.log(data.game);
+    return data.game;
   };
 
   useEffect(() => {
-    // getGames().then((games) => {
-    //   setGames(shuffle(games));
-    //   setLoading(false);
-    // });
+    getGames().then((games) => {
+      setGames(shuffle(games));
+
+      setLoading(false);
+    });
   }, []);
   if (loading) return <img src={loadingGif} />;
   return (
@@ -91,9 +92,33 @@ function Stage() {
 }
 
 const GameIcon = ({ game, index, currentGame, setGame }) => {
+  const { user } = useContext(globalContext);
   const { path, name, author } = game;
   const [selected, setSelected] = useState(false);
   const highlightColor = index === currentGame ? "#ff8800" : "#333";
+
+  const handleSetSelected = async () => {
+    let toggled = !selected;
+    setSelected(toggled);
+    if (toggled) {
+      try {
+        let response = await axios.post(
+          `/api/user/${user._id}/games/${game._id}`
+        );
+        console.log(response);
+      } catch (err) {
+        console.log("err adding favorite:", err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (user?.games) {
+      console.log(user.games);
+      user.games.map((g) => (g === game._id ? setSelected(true) : null));
+    }
+  });
+
   return (
     <div
       className="game-icon"
@@ -103,7 +128,11 @@ const GameIcon = ({ game, index, currentGame, setGame }) => {
     >
       <p style={{ background: highlightColor, position: "relative" }}>
         {name}
-        <span className="star-container" onClick={() => setSelected(!selected)}>
+        <span
+          style={{ display: user?.games ? "block" : "none" }}
+          className="star-container"
+          onClick={handleSetSelected}
+        >
           {selected ? (
             <StarFill color={"#ff8800"} />
           ) : (
