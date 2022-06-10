@@ -20,7 +20,7 @@ function Stage() {
   const [loading, setLoading] = useState(true);
 
   const getGames = async () => {
-    let { data } = await axios.get("/api/game");
+    let { data } = await axios.post("/api/game/gamelist");
     console.log(data.game);
     return data.game;
   };
