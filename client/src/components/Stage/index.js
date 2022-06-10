@@ -14,9 +14,9 @@ import axios from "axios";
 
 function Stage() {
   const { user, loggedIn, setLoggedIn } = useContext(globalContext);
-  const [Games, setGames] = useState();
-  const [game, setGame] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [Games, setGames] = useState(gameList);
+  const [game, setGame] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const getGames = async () => {
     let { data } = await axios.get("/api/game");
@@ -25,10 +25,10 @@ function Stage() {
   };
 
   useEffect(() => {
-    getGames().then((games) => {
-      setGames(shuffle(games));
-      setLoading(false);
-    });
+    // getGames().then((games) => {
+    //   setGames(shuffle(games));
+    //   setLoading(false);
+    // });
   }, []);
   if (loading) return <img src={loadingGif} />;
   return (

@@ -48,7 +48,7 @@
   }
   
   .chat-window .chat-body .message .message-content {
-    width: 380px;
+    width: 360px;
     height: auto;
     min-height: 40px;
     max-width: 380px;
@@ -58,11 +58,6 @@
     align-items: center;
     overflow-wrap: break-word;
     word-break: break-word;
-  }
-  
-  #you .message-content {
-    justify-content: flex-start;
-    background-color: #333333;
   }
   
   .message-meta #author {
@@ -110,4 +105,5 @@
   color: white;
   min-width: 98%;
   text-align: center;
+  font-size: larger;
 }
