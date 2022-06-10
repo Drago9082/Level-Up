@@ -109,6 +109,15 @@ const GameIcon = ({ game, index, currentGame, setGame }) => {
       } catch (err) {
         console.log("err adding favorite:", err);
       }
+    } else {
+      try {
+        let response = await axios.delete(
+          `/api/user/${user._id}/games/${game._id}`
+        );
+        console.log(response);
+      } catch (err) {
+        console.log("err removing favorite:", err);
+      }
     }
   };
 
