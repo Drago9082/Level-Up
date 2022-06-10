@@ -7,6 +7,7 @@ const socketio = require("socket.io");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require('path');
 
 dotenv.config();
 
@@ -16,9 +17,14 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  express.static(path.join(__dirname, "public"))
-);
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(
