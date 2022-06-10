@@ -73,7 +73,7 @@ function Stage() {
                               game={g}
                               index={i}
                               setGame={setGame}
-                              currentGame={game}
+                              currentGame={Games[game]}
                             />
                           ))
                         )}

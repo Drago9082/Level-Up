@@ -4,7 +4,7 @@ import { Star, StarFill } from "react-bootstrap-icons";
 import axios from "axios";
 
 const GameIcon = ({ game, index, currentGame, setGame }) => {
-  const { user } = useContext(globalContext);
+  const { user, setUser } = useContext(globalContext);
   const { path, name, author } = game;
   const [selected, setSelected] = useState(false);
   const highlightColor = index === currentGame ? "#ff8800" : "#333";
@@ -17,6 +17,7 @@ const GameIcon = ({ game, index, currentGame, setGame }) => {
         let response = await axios.post(
           `/api/user/${user._id}/games/${game._id}`
         );
+        setUser(response);
         console.log(response);
       } catch (err) {
         console.log("err adding favorite:", err);
@@ -27,6 +28,7 @@ const GameIcon = ({ game, index, currentGame, setGame }) => {
           `/api/user/${user._id}/games/${game._id}`
         );
         console.log(response);
+        setUser(response);
       } catch (err) {
         console.log("err removing favorite:", err);
       }
