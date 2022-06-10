@@ -6,11 +6,12 @@ import uuid from "react-uuid";
 import shuffle from "../../helpers/shuffle";
 import profilePicture from "../../assets/profilepicture.png";
 import gameList from "../../helpers/gameList";
-import { Star, StarFill } from "react-bootstrap-icons";
+import GameIcon from "../GameIcon";
 import loadingGif from "../../assets/spinner.gif";
 
 import "./style.css";
 import axios from "axios";
+import FavGameIcon from "../FavGameIcon";
 
 function Stage() {
   const { user, loggedIn, setLoggedIn } = useContext(globalContext);
@@ -59,7 +60,26 @@ function Stage() {
                 </Container>
                 <Container id="favourite-games">
                   <Row>
-                    <h2>Favourite Games</h2>
+                    <Col>
+                      <h2>Favourite Games</h2>
+                      <div className="favorite-games-list">
+                        {user?.games?.length === 0 ? (
+                          <p>
+                            You have no favorite games. Go ahead and add some!
+                          </p>
+                        ) : (
+                          user.games.map((g, i) => (
+                            <FavGameIcon
+                              key={uuid()}
+                              game={g}
+                              index={i}
+                              setGame={setGame}
+                              currentGame={game}
+                            />
+                          ))
+                        )}
+                      </div>
+                    </Col>
                   </Row>
                 </Container>
               </Container>
@@ -91,73 +111,4 @@ function Stage() {
   );
 }
 
-const GameIcon = ({ game, index, currentGame, setGame }) => {
-  const { user } = useContext(globalContext);
-  const { path, name, author } = game;
-  const [selected, setSelected] = useState(false);
-  const highlightColor = index === currentGame ? "#ff8800" : "#333";
-
-  const handleSetSelected = async () => {
-    let toggled = !selected;
-    setSelected(toggled);
-    if (toggled) {
-      try {
-        let response = await axios.post(
-          `/api/user/${user._id}/games/${game._id}`
-        );
-        console.log(response);
-      } catch (err) {
-        console.log("err adding favorite:", err);
-      }
-    } else {
-      try {
-        let response = await axios.delete(
-          `/api/user/${user._id}/games/${game._id}`
-        );
-        console.log(response);
-      } catch (err) {
-        console.log("err removing favorite:", err);
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (user?.games) {
-      console.log(user.games);
-      user.games.map((g) => (g === game._id ? setSelected(true) : null));
-    }
-  });
-
-  return (
-    <div
-      className="game-icon"
-      style={{
-        borderColor: highlightColor,
-      }}
-    >
-      <p style={{ background: highlightColor, position: "relative" }}>
-        {name}
-        <span
-          style={{ display: user?.games ? "block" : "none" }}
-          className="star-container"
-          onClick={handleSetSelected}
-        >
-          {selected ? (
-            <StarFill color={"#ff8800"} />
-          ) : (
-            <Star color={"#ff8800"} />
-          )}
-        </span>
-      </p>
-
-      <div
-        className="game-icon-body"
-        onClick={() => setGame(index)}
-        style={{
-          backgroundImage: `url(games/${path}/icon.png)`,
-        }}
-      ></div>
-    </div>
-  );
-};
 export default Stage;
