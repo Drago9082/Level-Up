@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 import Chat from "./Chat";
 import "./style.css";
 const socket = io.connect(
-  process.env.REACT_APP_BASE_URL || "http://localhost:3000"
+  process.env.REACT_APP_BASE_URL_IO || "http://localhost:3000"
 );
 
 function Chatroom() {
