@@ -6,6 +6,7 @@ import uuid from "react-uuid";
 import shuffle from "../../helpers/shuffle";
 import profilePicture from "../../assets/profilepicture.png";
 import gameList from "../../helpers/gameList";
+import { Star, StarFill } from "react-bootstrap-icons";
 
 import "./style.css";
 
@@ -79,6 +80,7 @@ function Stage() {
 
 const GameIcon = ({ game, index, currentGame, setGame }) => {
   const { path, name, author } = game;
+  const [selected, setSelected] = useState(false);
   const highlightColor = index === currentGame ? "#ff8800" : "#333";
   return (
     <div
@@ -86,10 +88,21 @@ const GameIcon = ({ game, index, currentGame, setGame }) => {
       style={{
         borderColor: highlightColor,
       }}
-      onClick={() => setGame(index)}
     >
-      <p style={{ background: highlightColor }}>{name}</p>
+      <p style={{ background: highlightColor, position: "relative" }}>
+        {name}
+        <span className="star-container" onClick={() => setSelected(!selected)}>
+          {selected ? (
+            <StarFill color={"#ff8800"} />
+          ) : (
+            <Star color={"#ff8800"} />
+          )}
+        </span>
+      </p>
+
       <div
+        className="game-icon-body"
+        onClick={() => setGame(index)}
         style={{
           backgroundImage: `url(games/${path}/icon.png)`,
         }}
