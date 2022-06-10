@@ -32,6 +32,7 @@ function Nav() {
 
   return (
     <header className="flex-row px-1">
+      <img src="android-chrome-192x192.png" style={{ height: "3rem" }} />
       <h1>
         <Link to="/">
           <h1 id="logo">
