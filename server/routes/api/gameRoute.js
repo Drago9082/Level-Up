@@ -13,8 +13,10 @@ const {
 //api/game
 //gets list of all games
 router.route('/')
-.get(getGames)
 .post(createGame);
+
+router.route('/gamelist')
+.post(getGames)
 //api/games/:gameId
 //gets game by id, udates game by id, delete game by id
 router.route('/:gameId')

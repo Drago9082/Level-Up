@@ -20,7 +20,7 @@ router.route("/signup").post(signUp);
 
 router.route("/login").post(logIn);
 
-router.route("/logout").get(logOut);
+router.route("/logout").post(logOut);
 
 router.route("/loggedIn").post(loggedIn);
 
