@@ -36,24 +36,20 @@ function RegisterForm(props) {
         position: "centered",
       }}
     >
-
-      <Modal.Header id ="modal-header">
-        <Modal.Title id ="modal-title-reg">
-        Register a new account
-        </Modal.Title>
-
+      <Modal.Header id="modal-header">
+        <Modal.Title id="modal-title-reg">Register a new account</Modal.Title>
       </Modal.Header>
       <Modal.Body id="modal-body">
         <form onSubmit={register}>
           <input
-            id="form-fields"
+            className="form-fields"
             type="name"
             placeholder="User Name"
             onChange={(e) => setUserName(e.target.value)}
             value={userName}
           />
           <input
-            id="form-fields"
+            className="form-fields"
             type="email"
             placeholder="Email"
             //when a letter is put in as an email
@@ -62,14 +58,14 @@ function RegisterForm(props) {
             value={email}
           />
           <input
-            id="form-fields"
+            className="form-fields"
             type="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
           <input
-            id="form-fields"
+            className="form-fields"
             type="password"
             placeholder="Verify your password"
             onChange={(e) => setPasswordVerify(e.target.value)}
