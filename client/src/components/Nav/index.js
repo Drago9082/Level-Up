@@ -41,7 +41,10 @@ function Nav() {
       </h1>
 
       <nav>
-        <a href="https://drago9082.github.io/Level-Up-Reveal.js/">
+        <a
+          href="https://drago9082.github.io/Level-Up-Reveal.js/"
+          target="_blank"
+        >
           <button id="present-btn">View Presentation</button>
         </a>
         {!loggedIn ? (
