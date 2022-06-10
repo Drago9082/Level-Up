@@ -36,6 +36,6 @@ router.route("/:userId").get(getSingleUserById);
 //adds games to user's favorites
 router.route("/:userId/games/:gameId").post(addGame);
 
-router.route("/getUserName/:userId").get(getUserName);
+router.route("/getUserName/:userId").post(getUserName);
 
 module.exports = router;
