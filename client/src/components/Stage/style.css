@@ -43,9 +43,8 @@
   border-radius: 0.5rem;
   background-size: cover;
   margin: 1rem;
-  overflow: hidden;
-  -webkit-box-shadow: 0px 0px 30px 0px #000000; 
-box-shadow: 0px 0px 30px 0px #000000;
+  -webkit-box-shadow: 0px 0px 30px 0px #000000;
+  box-shadow: 0px 0px 30px 0px #000000;
 }
 
 .game-icon p {
@@ -57,11 +56,21 @@ box-shadow: 0px 0px 30px 0px #000000;
   user-select: none;
 }
 
-.game-icon div {
-  height: 8rem;
+.game-icon-body {
+  height: 7.5rem;
   background-size: cover;
 }
 
+.star-container {
+  height: 2rem;
+  width: 2rem;
+  border: 2px solid #ff8800;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #333;
+}
 #game-container {
   height: 100%;
   width: 100%;
@@ -97,23 +106,22 @@ box-shadow: 0px 0px 30px 0px #000000;
 h2 {
   font-family: "VT323", monospace;
 }
-#pfp{
+#pfp {
   height: 75px;
   width: 100px;
   border-radius: 50%;
   object-fit: cover;
-
 }
-.row{
+.row {
   flex-wrap: nowrap;
   width: 100%;
 }
-#profile-btns{
+#profile-btns {
   height: 2rem;
   width: 9rem;
   position: absolute;
   top: 16.5rem;
 }
-#profile-btns:last-child{
+#profile-btns:last-child {
   right: 6rem;
 }
