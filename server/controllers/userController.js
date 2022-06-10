@@ -95,8 +95,10 @@ module.exports = {
         })
         .send();
     } catch (error) {
-      console.log(error);
-      return res.status(500).json(error);
+      console.log("signup error:", "\n", error);
+      return res
+        .status(500)
+        .json({ errorMessage: "Something went wrong on the server." });
     }
   },
 
@@ -155,14 +157,12 @@ module.exports = {
     try {
       const { email, password } = req.body;
       if (!email || !password) {
+        let errorMessage =
+          "Missing info, fill out both email and password to log in";
+        console.log(errorMessage);
         return res.status(400).json({
-          errorMessage:
-            "Missing info, fill out both email and password to log in",
+          errorMessage,
         });
-      }
-
-      if (!email) {
-        return res.status(400).json({ errorMessage: "Wrong credentials" });
       }
 
       let { _id, userName, pwHashed, games } = await User.findOne({
@@ -172,7 +172,9 @@ module.exports = {
       const passwordCompare = await bcrypt.compare(password, pwHashed);
 
       if (!passwordCompare) {
-        return res.status(400).json({ errorMessage: "Wrong credentials" });
+        let errorMessage = "Wrong credentials";
+        console.log(errorMessage);
+        return res.status(400).json({ errorMessage });
       }
       //existingUser = { ...existingUser, pwHashed: null };
       //=======COOKIE SETUP AND SEND=======//
@@ -193,8 +195,10 @@ module.exports = {
         })
         .send({ _id, email, userName, games });
     } catch (err) {
-      console.log(err);
-      res.send(err);
+      console.log("err loggin in:", "\n", err);
+      res
+        .status(500)
+        .send({ errorMessage: "Something went wrong on the server." });
     }
   },
   loggedIn(req, res) {

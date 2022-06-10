@@ -22,11 +22,14 @@ function RegisterForm(props) {
         password,
         passwordVerify,
       };
+
+      console.log("signup data:", userSignUpData);
       await axios.post("/api/user/signup", userSignUpData);
       //watch the frick out if you dont pass validation on the password it just fails..
       await getLogged();
     } catch (err) {
       console.error(err);
+      console.log(err.response);
     }
   }
   return (
@@ -36,12 +39,8 @@ function RegisterForm(props) {
         position: "centered",
       }}
     >
-
-      <Modal.Header id ="modal-header">
-        <Modal.Title id ="modal-title-reg">
-        Register a new account
-        </Modal.Title>
-
+      <Modal.Header id="modal-header">
+        <Modal.Title id="modal-title-reg">Register a new account</Modal.Title>
       </Modal.Header>
       <Modal.Body id="modal-body">
         <form onSubmit={register}>

@@ -22,6 +22,8 @@ function LoginForm() {
         password,
       };
 
+      console.log("login data:", userLoginData);
+
       let { data: user } = await axios.post("/api/user/login", userLoginData);
       //watch the frick out if you dont pass validation on the password it just fails..
       setUser(user);
@@ -30,6 +32,7 @@ function LoginForm() {
       navigate("/");
     } catch (err) {
       console.error(err);
+      console.log(err.response);
     }
   }
   return (
