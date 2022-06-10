@@ -11,6 +11,7 @@ const {
   logIn,
   logOut,
   loggedIn,
+  deleteUserGame,
 } = require("../../controllers/userController");
 
 //api/user
@@ -37,5 +38,7 @@ router.route("/:userId").get(getSingleUserById);
 router.route("/:userId/games/:gameId").post(addGame);
 
 router.route("/getUserName/:userId").post(getUserName);
+
+router.route("/:userId/games/:gameId").delete(deleteUserGame);
 
 module.exports = router;

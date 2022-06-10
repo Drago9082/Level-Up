@@ -239,4 +239,23 @@ module.exports = {
       res.json(false);
     }
   },
+   deleteUserGame(req, res) {
+    User.findOne({ _id: req.params.userId })
+      .then((user) => {
+        const index = user.game.indexOf(req.params.gameId);
+        if (index > -1) {
+          user.game.splice(index, 1);
+          user.save();
+          res.status(200).json(user);
+        } else {
+          res
+            .status(404)
+            .json({ message: "User has no games with that id!" });
+        }
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 };
+
+
+
