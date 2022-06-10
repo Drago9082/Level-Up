@@ -40,7 +40,6 @@ function App() {
         const currentUser = await axios.post(
           `/api/user/getUserName/${currentUserId}`
         );
-        console.log(currentUser);
         setUser(currentUser.data);
       }
       setLoggedIn(loggedResponse.data);

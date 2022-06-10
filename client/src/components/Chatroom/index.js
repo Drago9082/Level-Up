@@ -12,11 +12,9 @@ function Chatroom() {
   const [showChat, setShowChat] = useState(false);
   const joinChat = () => {};
 
-  console.log(user);
 
   useEffect(() => {
     setUsername(user.userName);
-    console.log(user.userName);
     if (user.userName !== undefined) {
       socket.emit("join_room", room);
       setShowChat(true);
