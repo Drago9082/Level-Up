@@ -34,10 +34,10 @@ function App() {
 
   async function getLogged() {
     try {
-      const loggedResponse = await axios.get("/api/user/loggedIn");
+      const loggedResponse = await axios.post("/api/user/loggedIn");
       if (loggedResponse) {
         const currentUserId = loggedResponse.data.user;
-        const currentUser = await axios.get(
+        const currentUser = await axios.post(
           `/api/user/getUserName/${currentUserId}`
         );
         console.log(currentUser);

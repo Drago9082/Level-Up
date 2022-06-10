@@ -11,6 +11,7 @@ const {
   logIn,
   logOut,
   loggedIn,
+  deleteUserGame,
 } = require("../../controllers/userController");
 
 //api/user
@@ -21,7 +22,8 @@ router.route("/login").post(logIn);
 
 router.route("/logout").get(logOut);
 
-router.route("/loggedIn").get(loggedIn);
+router.route("/loggedIn").post(loggedIn);
+
 
 router.route("/test").get((req, res) => {
   res.status(200).send("Testing Testing You Suck");
@@ -35,6 +37,8 @@ router.route("/:userId").get(getSingleUserById);
 //adds games to user's favorites
 router.route("/:userId/games/:gameId").post(addGame);
 
-router.route("/getUserName/:userId").get(getUserName);
+router.route("/getUserName/:userId").post(getUserName);
+
+router.route("/:userId/games/:gameId").delete(deleteUserGame);
 
 module.exports = router;

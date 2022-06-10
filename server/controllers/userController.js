@@ -95,10 +95,8 @@ module.exports = {
         })
         .send();
     } catch (error) {
-      console.log("signup error:", "\n", error);
-      return res
-        .status(500)
-        .json({ errorMessage: "Something went wrong on the server." });
+      console.log(error);
+      return res.status(500).json(error);
     }
   },
 
@@ -157,13 +155,12 @@ module.exports = {
     try {
       const { email, password } = req.body;
       if (!email || !password) {
-        let errorMessage =
-          "Missing info, fill out both email and password to log in";
-        console.log(errorMessage);
         return res.status(400).json({
-          errorMessage,
+          errorMessage:
+            "Missing info, fill out both email and password to log in",
         });
       }
+
 
       let tempUser = await User.findOne({ email: email });
       if (!tempUser?._id)
@@ -171,12 +168,11 @@ module.exports = {
 
       let { _id, userName, pwHashed, games } = tempUser;
 
+
       const passwordCompare = await bcrypt.compare(password, pwHashed);
 
       if (!passwordCompare) {
-        let errorMessage = "Wrong credentials";
-        console.log(errorMessage);
-        return res.status(400).json({ errorMessage });
+        return res.status(400).json({ errorMessage: "Wrong credentials" });
       }
       //existingUser = { ...existingUser, pwHashed: null };
       //=======COOKIE SETUP AND SEND=======//
@@ -197,10 +193,8 @@ module.exports = {
         })
         .send({ _id, email, userName, games });
     } catch (err) {
-      console.log("err loggin in:", "\n", err);
-      res
-        .status(500)
-        .send({ errorMessage: "Something went wrong on the server." });
+      console.log(err);
+      res.send(err);
     }
   },
   loggedIn(req, res) {
@@ -245,4 +239,23 @@ module.exports = {
       res.json(false);
     }
   },
+   deleteUserGame(req, res) {
+    User.findOne({ _id: req.params.userId })
+      .then((user) => {
+        const index = user.game.indexOf(req.params.gameId);
+        if (index > -1) {
+          user.game.splice(index, 1);
+          user.save();
+          res.status(200).json(user);
+        } else {
+          res
+            .status(404)
+            .json({ message: "User has no games with that id!" });
+        }
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 };
+
+
+
