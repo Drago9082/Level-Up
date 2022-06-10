@@ -23,7 +23,7 @@ function Nav() {
   async function handleLogout() {
     try {
       setLoggedIn(false);
-      await axios.get("/api/user/logout");
+      await axios.post("/api/user/logout");
       window.location = "/";
     } catch (err) {
       console.error(err);
