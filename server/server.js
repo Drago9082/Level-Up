@@ -26,7 +26,7 @@ app.use(
   cors({
     credentials: true,
     secure: true,
-    origin: [process.env.REACT8_APP_BASE_URL || "http://localhost:3000"],
+    origin: [process.env.REACT_APP_BASE_URL || "http://localhost:3000"],
   })
 );
 app.use(routes);
