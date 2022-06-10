@@ -201,13 +201,13 @@ module.exports = {
         .send({ errorMessage: "Something went wrong on the server." });
     }
   },
-  loggedIn(req, res) {
+  async loggedIn(req, res) {
     try {
       const authToken = req.cookies.token;
       if (!authToken) {
         return res.json(false);
       }
-      const thisResponse = jwt.verify(authToken, process.env.JWT_SECRETPASS);
+      const thisResponse = await jwt.verify(authToken, process.env.JWT_SECRETPASS);
       res.send(thisResponse);
     } catch (err) {
       console.log(err);
