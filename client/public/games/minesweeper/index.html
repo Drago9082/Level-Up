@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="apple-touch-icon" type="image/png"
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+        color="#111" />
+
+
+    <title>CodePen - 90 Second Minesweeper</title>
+
+
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            margin: 30px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.3em;
+            background: #e2e8ce;
+            color: #305F72;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .top {
+            width: 400px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #acbfa4;
+            border-top: 10px solid #acbfa4;
+            border-left: 10px solid #acbfa4;
+            border-right: 10px solid #acbfa4;
+        }
+
+        .flag-box,
+        .timer-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 125px;
+            height: 75px;
+            background: #262626;
+            border: 5px solid;
+            border-color: #7c8a76 #e2e8ce #e2e8ce #7c8a76;
+            color: #ff7f11;
+        }
+
+        .emoji-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 85px;
+            height: 85px;
+            margin: 0 20px 0 20px;
+            padding-top: 5px;
+            background: #acbfa4;
+            border: 5px solid;
+            border-color: #e2e8ce #7c8a76 #7c8a76 #e2e8ce;
+            outline: none;
+            font-size: 2.1em;
+            cursor: pointer;
+        }
+
+        .grid {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            background: #acbfa4;
+            border: 10px solid #acbfa4;
+            margin-bottom: 20px;
+        }
+
+        .grid div {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .valid,
+        .bomb {
+            height: 40px;
+            width: 40px;
+            border: 5px solid;
+            border-color: #e2e8ce #7c8a76 #7c8a76 #e2e8ce;
+            box-sizing: border-box;
+        }
+
+        .checked {
+            height: 40px;
+            width: 40px;
+            border: 2px solid;
+            background-color: #262626;
+            border-color: #7c8a76;
+            box-sizing: border-box;
+        }
+
+        .one {
+            color: #4299E1;
+        }
+
+        .two {
+            color: #48BB78;
+        }
+
+        .three {
+            color: #F56565;
+        }
+
+        .four {
+            color: #9F7AEA;
+        }
+    </style>
+
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+
+
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+
+
+</head>
+
+<body translate="no">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+        <title>Minesweeper</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="top">
+                <div class="flag-box">
+                    <h1>0<span id="flags-left"></span></h1>
+                </div>
+                <button class="emoji-btn">
+                    <h1>🙂</h1>
+                </button>
+                <div class="timer-box">
+                    <h1><span id="timer">0</span></h1>
+                </div>
+            </div>
+            <div class="grid"></div>
+            <div id="result"></div>
+        </div>
+
+
+        <script src="/code.js"></script>
+    </body>
+    <script
+        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+
+    <script id="rendered-js">
+        // Copyright (c) 2020 Ania Kubow
+        // Bulk of code was written along with Ania's Youtube tutorial for fun 
+        // My own edits include stylings and timing function
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.querySelector('.grid');
+            const flagsLeft = document.querySelector('#flags-left');
+            const result = document.querySelector('#result');
+            const timer = document.querySelector('#timer');
+            const emojiBtn = document.querySelector('.emoji-btn');
+            let width = 10;
+            let bombAmount = 20;
+            let flags = 0;
+            let squares = [];
+            let count = 0; // used for timer
+            let intervalRef = null; // used for timer
+            let isGameOver = false;
+
+            // Create Board
+            function createBoard() {
+                // Get shuffled game array with random bombs
+                const bombsArray = Array(bombAmount).fill('bomb'); // create bomb array
+                const emptyArray = Array(width * width - bombAmount).fill('valid'); // create empty array
+                const gameArray = emptyArray.concat(bombsArray); // combine both arrays
+                const shuffledArray = gameArray.sort(() => Math.random() - 0.5); // shuffle bombs throughout
+
+                emojiBtn.innerHTML = '🙂';
+                flagsLeft.innerHTML = bombAmount;
+
+                // Creates 100 tiles with bombs from shuffled array
+                for (let i = 0; i < width * width; i++) {
+                    const square = document.createElement('div');
+                    square.setAttribute('id', i);
+                    square.classList.add(shuffledArray[i]);
+                    grid.appendChild(square);
+                    squares.push(square);
+
+                    // Normal Click
+                    square.addEventListener('click', function (e) {
+                        if (isGameOver) { return; }
+                        emojiBtn.innerHTML = '😬';
+                        click(square);
+                    });
+
+                    // ctrl and Left Click
+                    square.oncontextmenu = function (e) {
+                        e.preventDefault();
+                        addFlag(square);
+                    };
+
+                    // Mouseover
+                    square.addEventListener('mouseover', function (e) {
+                        if (isGameOver) { return; }
+                        emojiBtn.innerHTML = '🤔';
+                    });
+                }
+
+                // Add numbers to the squares
+                for (let i = 0; i < squares.length; i++) {
+                    let total = 0;
+                    const isLeftEdge = i % width === 0;
+                    const isRightEdge = i % width === width - 1;
+
+                    if (squares[i].classList.contains('valid')) {
+                        if (i > 0 && !isLeftEdge && squares[i - 1].classList.contains('bomb')) { total++; };
+                        if (i > 9 && !isRightEdge && squares[i + 1 - width].classList.contains('bomb')) { total++; };
+                        if (i > 10 && squares[i - width].classList.contains('bomb')) { total++; };
+                        if (i > 11 && !isLeftEdge && squares[i - 1 - width].classList.contains('bomb')) { total++; };
+                        if (i < 98 && !isRightEdge && squares[i + 1].classList.contains('bomb')) { total++; };
+                        if (i < 90 && !isLeftEdge && squares[i - 1 + width].classList.contains('bomb')) { total++; };
+                        if (i < 88 && !isRightEdge && squares[i + 1 + width].classList.contains('bomb')) { total++; };
+                        if (i < 89 && squares[i + width].classList.contains('bomb')) { total++; };
+                        squares[i].setAttribute('data', total);
+                    }
+                }
+            }
+            createBoard();
+
+            // Add flag with right click
+            function addFlag(square) {
+                if (isGameOver) { return; }
+                if (!square.classList.contains('checked') && flags < bombAmount) {
+                    if (!square.classList.contains('flag')) {
+                        square.classList.add('flag');
+                        square.innerHTML = '🚩';
+                        flags++;
+                        flagsLeft.innerHTML = bombAmount - flags;
+                        checkForWin();
+                    } else {
+                        square.classList.remove('flag');
+                        square.innerHTML = '';
+                        flags--;
+                        flagsLeft.innerHTML = bombAmount - flags; // fix so that you can uncheck flag if last flag has been placed
+                    }
+                }
+            }
+
+            // Click on square actions
+            function click(square) {
+                let currentId = square.id;
+                if (isGameOver) { return; };
+                if (square.classList.contains('checked') || square.classList.contains('flag')) { return; };
+                if (square.classList.contains('bomb')) {
+                    gameOver();
+                } else {
+                    let total = square.getAttribute('data');
+                    if (total != 0) {
+                        square.classList.add('checked');
+                        if (total == 1) { square.classList.add('one'); }; // adding classes for colors
+                        if (total == 2) { square.classList.add('two'); };
+                        if (total == 3) { square.classList.add('three'); };
+                        if (total == 4) { square.classList.add('four'); };
+                        square.innerHTML = total;
+                        return;
+                    }
+                    checkSquare(square, currentId);
+                }
+                square.classList.add('checked');
+            }
+
+            // Check neighboring squares once square is clicked
+            // Creates the spreading effect
+            function checkSquare(square, currentId) {
+                const isLeftEdge = currentId % width === 0;
+                const isRightEdge = currentId % width === width - 1;
+
+                setTimeout(() => {
+                    if (currentId > 0 && !isLeftEdge) {
+                        const newId = squares[parseInt(currentId) - 1].id;
+                        //const newId = parseInt(currentId) - 1   ....refactor
+                        const newSquare = document.getElementById(newId);
+                        click(newSquare);
+                    }
+                    if (currentId > 9 && !isRightEdge) {
+                        const newId = squares[parseInt(currentId) + 1 - width].id;
+                        //const newId = parseInt(currentId) +1 -width   ....refactor
+                        const newSquare = document.getElementById(newId);
+                        click(newSquare);
+                    }
+                    if (currentId >= 10) {
+                        const newId = squares[parseInt(currentId - width)].id;
+                        //const newId = parseInt(currentId) -width   ....refactor
+                        const newSquare = document.getElementById(newId);
+                        click(newSquare);
+                    }
+                    if (currentId >= 11 && !isLeftEdge) {
+                        const newId = squares[parseInt(currentId) - 1 - width].id;
+                        //const newId = parseInt(currentId) -1 -width   ....refactor
+                        const newSquare = document.getElementById(newId);
+                        click(newSquare);
+                    }
+                    if (currentId <= 98 && !isRightEdge) {
+                        const newId = squares[parseInt(currentId) + 1].id;
+                        //const newId = parseInt(currentId) +1   ....refactor
+                        const newSquare = document.getElementById(newId);
+                        click(newSquare);
+                    }
+                    if (currentId < 90 && !isLeftEdge) {
+                        const newId = squares[parseInt(currentId) - 1 + width].id;
+                        //const newId = parseInt(currentId) -1 +width   ....refactor
+                        const newSquare = document.getElementById(newId);
+                        click(newSquare);
+                    }
+                    if (currentId <= 88 && !isRightEdge) {
+                        const newId = squares[parseInt(currentId) + 1 + width].id;
+                        //const newId = parseInt(currentId) +1 +width   ....refactor
+                        const newSquare = document.getElementById(newId);
+                        click(newSquare);
+                    }
+                    if (currentId <= 89) {
+                        const newId = squares[parseInt(currentId) + width].id;
+                        //const newId = parseInt(currentId) +width   ....refactor
+                        const newSquare = document.getElementById(newId);
+                        click(newSquare);
+                    }
+                }, 10);
+            }
+
+            // Timer 
+            let startTime = function () {
+                intervalRef = setInterval(() => {
+                    count += 10;
+                    let s = Math.floor(count / 1000);
+                    timer.innerHTML = s;
+                    if (s >= 90) {
+                        clearInterval(intervalRef);
+                        timeUp();
+                    }
+                }, 10);
+                removeEventListener('click', startTime);
+            };
+            // Start the timer
+            window.addEventListener('click', startTime);
+
+            // Time Up
+            function timeUp() {
+                timer.innerHTML = 'END';
+                emojiBtn.innerHTML = '😞';
+                result.innerHTML = 'Out of Time!';
+                isGameOver = 'true';
+
+                // Show ALL the bombs
+                squares.forEach(square => {
+                    if (square.classList.contains('bomb')) {
+                        square.innerHTML = '💣';
+                    }
+                });
+            }
+
+            // Game Over
+            function gameOver(square) {
+                clearInterval(intervalRef);
+                timer.innerHTML = 'END';
+                emojiBtn.innerHTML = '😵';
+                result.innerHTML = 'BOOM! Game Over!';
+                isGameOver = true;
+
+                // Show ALL the bombs
+                squares.forEach(square => {
+                    if (square.classList.contains('bomb')) {
+                        square.innerHTML = '💣';
+                    }
+                });
+            }
+
+            // Check for Win
+            function checkForWin() {
+                let matches = 0;
+
+                for (let i = 0; i < squares.length; i++) {
+                    if (squares[i].classList.contains('flag') && squares[i].classList.contains('bomb')) {
+                        matches++;
+                    }
+                    if (matches === bombAmount) {
+                        clearInterval(intervalRef);
+                        timer.innerHTML = 'WIN';
+                        emojiBtn.innerHTML = '😎';
+                        result.innerHTML = 'YOU WIN!';
+                        isGameOver = true;
+                    }
+                }
+            }
+
+            // Reload Game
+            emojiBtn.addEventListener('click', function (e) {
+                emojiBtn.style.borderColor = '#F0B7A4 #FFEBCF #FFEBCF #F0B7A4';
+                location.removedByCodePen();
+            });
+        });
+//# sourceURL=pen.js
+    </script>
+
+
+
+</body>
+
+</html>
