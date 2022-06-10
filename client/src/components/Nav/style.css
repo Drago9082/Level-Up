@@ -96,7 +96,7 @@ form * {
 #submitBtn {
   background-color: #181818;
   color: #ff8800;
-  margin-left: 190px;
+  /* margin-left: 190px; */
   margin-top: 1px;
 }
 #forgotPasswordBtn {
