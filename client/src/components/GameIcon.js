@@ -35,7 +35,7 @@ const GameIcon = ({ game, index, currentGame, setGame }) => {
 
   useEffect(() => {
     if (user?.games) {
-      user.games.map((g) => (g === game._id ? setSelected(true) : null));
+      user.games.map((g) => (g._id === game._id ? setSelected(true) : null));
     }
   });
 
