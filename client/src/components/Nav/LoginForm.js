@@ -36,7 +36,8 @@ function LoginForm() {
     <div>
       <form onSubmit={login}>
         <input
-          id="form-fields"
+          id="email"
+          className="form-fields"
           type="email"
           placeholder="Email"
           //when a letter is put in as an email
@@ -45,7 +46,8 @@ function LoginForm() {
           value={email}
         />
         <input
-          id="form-fields"
+          id="password"
+          className="form-fields"
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
