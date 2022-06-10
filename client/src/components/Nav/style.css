@@ -1,117 +1,126 @@
 #user-buttons {
-    position: absolute;
-    right: 2.5rem;
-    top: 1.5rem;
+  position: absolute;
+  right: 2.5rem;
+  top: 1.5rem;
 }
 #modal-buttons {
-    border-radius: 0px;
-    background-color: #ff8800;
-    border: 0;
-    color: #181818;
-    margin-right: 2rem;
-    font-family: 'VT323', monospace;
-    font-size: 2rem;
-    line-height: 2rem;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
+  border-radius: 0px;
+  background-color: #ff8800;
+  border: 0;
+  color: #181818;
+  margin-right: 2rem;
+  font-family: "VT323", monospace;
+  font-size: 2rem;
+  line-height: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }
 #modal-buttons:focus {
-    -webkit-box-shadow: 0px 0px 0px 3px #db7500; 
-    box-shadow: 0px 0px 0px 3px #db7500;
+  -webkit-box-shadow: 0px 0px 0px 3px #db7500;
+  box-shadow: 0px 0px 0px 3px #db7500;
 }
-a{
-    text-decoration: none;
-    color: white;
+a {
+  text-decoration: none;
+  color: white;
 }
-a:hover{
-    text-decoration: none;
-    color: white;
+a:hover {
+  text-decoration: none;
+  color: white;
 }
 #logo {
-    margin: 1rem;
-    margin-bottom: 0;
-    font-family: 'Press Start 2P', cursive;
-    font-size:1.75rem;
+  margin: 1rem;
+  margin-bottom: 0;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.75rem;
 }
-header{
-    padding: 1rem;
-    background-color: #212121;
+header {
+  padding: 1rem;
+  background-color: #212121;
 }
-#gold{
-    color: #ff8800;
+#gold {
+  color: #ff8800;
 }
-.modal{
-    /* 4040 ,1818  */
-    color: #ff8800;
-    background-color: #4040406c;
-    position: fixed
-}
-
-#modal-header{
-    background-color: #181818;
-    border-top-left-radius: .5rem;
-    border-top-right-radius: .5rem;
-
-}
-#modal-title-reg{
-    background-color: #181818;
-    margin-left: 110px;
-    
-}
-#modal-title-log{
-    background-color: #181818;
-    margin-left: 190px;
-    font-size: 30px;
-    
+.modal {
+  /* 4040 ,1818  */
+  color: #ff8800;
+  background-color: #4040406c;
+  position: fixed;
 }
 
-#modal-body{
-    background-color: #404040;
-    border-bottom-left-radius: .5rem;
-    border-bottom-right-radius: .5rem;
+#modal-header {
+  background-color: #181818;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+#modal-title-reg {
+  background-color: #181818;
+  margin-left: 110px;
+}
+#modal-title-log {
+  background-color: #181818;
+  margin-left: 190px;
+  font-size: 30px;
 }
 
-#form-fields{
-    background-color: #181818;
-    color: #ff8800;
-    padding-left: 20%;
-    margin-left: 121px;
-    margin-top: 1px;
+#modal-body {
+  background-color: #404040;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
-#submitBtn{
-    background-color: #181818;
-    color: #ff8800;
-    margin-left: 190px;
-    margin-top: 1px;
-}
-#forgotPasswordBtn{
-    background-color: #00000000;
-    color: #ff8800;
-    margin-top:1px;
-
+.form-fields {
+  background-color: #181818;
+  color: #ff8800;
+  /* padding-left: 20%;
+  margin-left: 121px;
+  margin-top: 1px; */
 }
 
-
-
-.modal-content{
-    border-color: #181818;
-    border-radius: 700px;
-
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 100%;
 }
-#present-btn{
-    position: absolute;
-    top: 1.5rem;
-    right: 25%;
-    border-radius: 0px;
-    background-color: #ff8800;
-    border: 0;
-    color: #181818;
-    margin-right: 2rem;
-    font-family: 'VT323', monospace;
-    font-size: 2rem;
-    line-height: 2rem;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
 
+form input {
+  max-width: 75%;
+}
+form * {
+  margin: 0.5rem;
+}
+
+#submitBtn {
+  background-color: #181818;
+  color: #ff8800;
+  margin-left: 190px;
+  margin-top: 1px;
+}
+#forgotPasswordBtn {
+  background-color: #00000000;
+  color: #ff8800;
+  margin-top: 1px;
+}
+
+.modal-content {
+  border-color: #181818;
+  border-radius: 700px;
+}
+#present-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 25%;
+  border-radius: 0px;
+  background-color: #ff8800;
+  border: 0;
+  color: #181818;
+  margin-right: 2rem;
+  font-family: "VT323", monospace;
+  font-size: 2rem;
+  line-height: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }
