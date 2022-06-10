@@ -29,7 +29,7 @@ async function init() {
   games.map(async (g, i) => {
     try {
       console.log(`adding ${games[i].name}`);
-      await axios.post("http://localhost:3001/api/game", games[i]);
+      await axios.post("https://garden-boys-missing-their-popp.herokuapp.com/api/game", games[i]);
       console.log("ok");
     } catch (err) {
       console.log(err);
