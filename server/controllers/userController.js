@@ -161,13 +161,13 @@ module.exports = {
         });
       }
 
-      if (!email) {
-        return res.status(400).json({ errorMessage: "Wrong credentials" });
-      }
 
-      let { _id, userName, pwHashed, games } = await User.findOne({
-        email: email,
-      });
+      let tempUser = await User.findOne({ email: email });
+      if (!tempUser?._id)
+        return res.status(404).json({ errorMessage: "User doesn't exist." });
+
+      let { _id, userName, pwHashed, games } = tempUser;
+
 
       const passwordCompare = await bcrypt.compare(password, pwHashed);
 
