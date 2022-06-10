@@ -21,7 +21,8 @@ router.route("/login").post(logIn);
 
 router.route("/logout").get(logOut);
 
-router.route("/loggedIn").get(loggedIn);
+router.route("/loggedIn").post(loggedIn);
+
 
 router.route("/test").get((req, res) => {
   res.status(200).send("Testing Testing You Suck");
