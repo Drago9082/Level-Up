@@ -7,18 +7,30 @@ import shuffle from "../../helpers/shuffle";
 import profilePicture from "../../assets/profilepicture.png";
 import gameList from "../../helpers/gameList";
 import { Star, StarFill } from "react-bootstrap-icons";
+import loadingGif from "../../assets/spinner.gif";
 
 import "./style.css";
+import axios from "axios";
 
 function Stage() {
   const { user, loggedIn, setLoggedIn } = useContext(globalContext);
-  const [Games, setGames] = useState(gameList);
-  const [game, setGame] = useState(0);
+  const [Games, setGames] = useState();
+  const [game, setGame] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const getGames = async () => {
+    let { data } = await axios.get("/api/game");
+    console.log(data);
+    return data;
+  };
 
   useEffect(() => {
-    setGames(shuffle(gameList));
+    getGames().then((games) => {
+      setGames(shuffle(games));
+      setLoading(false);
+    });
   }, []);
-
+  if (loading) return <img src={loadingGif} />;
   return (
     <>
       <Container fluid id="container">
