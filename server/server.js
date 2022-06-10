@@ -17,7 +17,7 @@ const io = socketio(server);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
-  express.static(path.join(__dirname, "client/build", "index.html"))
+  express.static(path.join(__dirname, "public"))
 );
 app.use(express.json());
 app.use(cookieParser());
