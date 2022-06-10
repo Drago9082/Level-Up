@@ -23,12 +23,10 @@ function LoginForm() {
         password,
       };
 
-      console.log("login data:", userLoginData);
 
       let { data: user } = await axios.post("/api/user/login", userLoginData);
       //watch the frick out if you dont pass validation on the password it just fails..
       setUser(user);
-      console.log(user);
       await getLogged();
       navigate("/");
     } catch (err) {

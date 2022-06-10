@@ -21,7 +21,6 @@ function Stage() {
 
   const getGames = async () => {
     let { data } = await axios.post("/api/game/gamelist");
-    console.log(data.game);
     return data.game;
   };
 
