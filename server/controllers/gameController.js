@@ -6,7 +6,7 @@ module.exports = {
   getGames(req, res) {
     try {
       Game.find({}).then(async (game) => {
-        const gamesObj = { games, gameTotal: await gameTotal() };
+        const gamesObj = { game};
         return res.json(gamesObj);
       });
     } catch (error) {
