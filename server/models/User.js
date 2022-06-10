@@ -1,5 +1,5 @@
-const {Schema, model} = require('mongoose')
-const Game = require('./Game');
+const { Schema, model } = require("mongoose");
+const Game = require("./Game");
 
 const userSchema = new Schema({
   userName: {
@@ -9,22 +9,20 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   pwHashed: {
     type: String,
-    required: true
+    required: true,
   },
   games: [
     {
       type: Schema.Types.ObjectId,
-      ref:"Game"
-    }
-  ]
+      ref: Game,
+    },
+  ],
 });
 
-
-
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
