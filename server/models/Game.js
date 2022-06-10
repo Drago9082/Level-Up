@@ -1,32 +1,29 @@
-const { model, Schema} = require('mongoose')
+const { model, Schema } = require("mongoose");
 
 const gameSchema = new Schema({
-  Name: {
+  name: {
     type: String,
-    
   },
-  Genre: {
+  path: {
     type: String,
-    
   },
-  Highscore: {
+  author: {
+    type: String,
+  },
+  genre: {
+    type: String,
+  },
+  highscore: {
     type: Number,
-    
   },
-  Author: {
+  sourceURL: {
     type: String,
-    
   },
-  SourceURL: {
+  gitHubLink: {
     type: String,
-    
-  },
-  GitHubLink: {
-    type: String,
-    
   },
 });
 
-const Game = model('game', gameSchema)
+const Game = model("game", gameSchema);
 
 module.exports = Game;
