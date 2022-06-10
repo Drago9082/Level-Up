@@ -11,6 +11,7 @@ import loadingGif from "../../assets/spinner.gif";
 
 import "./style.css";
 import axios from "axios";
+import FavGameIcon from "../FavGameIcon";
 
 function Stage() {
   const { user, loggedIn, setLoggedIn } = useContext(globalContext);
@@ -59,7 +60,26 @@ function Stage() {
                 </Container>
                 <Container id="favourite-games">
                   <Row>
-                    <h2>Favourite Games</h2>
+                    <Col>
+                      <h2>Favourite Games</h2>
+                      <div className="favorite-games-list">
+                        {user?.games?.length === 0 ? (
+                          <p>
+                            You have no favorite games. Go ahead and add some!
+                          </p>
+                        ) : (
+                          user.games.map((g, i) => (
+                            <FavGameIcon
+                              key={uuid()}
+                              game={g}
+                              index={i}
+                              setGame={setGame}
+                              currentGame={game}
+                            />
+                          ))
+                        )}
+                      </div>
+                    </Col>
                   </Row>
                 </Container>
               </Container>

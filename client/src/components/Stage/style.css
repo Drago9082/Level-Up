@@ -62,6 +62,11 @@
   background-size: cover;
 }
 
+.fav-game-icon {
+  height: 5rem;
+  width: 6rem;
+}
+
 .star-container {
   height: 2rem;
   width: 2rem;
@@ -72,6 +77,15 @@
   right: -10px;
   background-color: #333;
 }
+
+.favorite-games-list {
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  flex-wrap: wrap;
+  height: auto;
+}
+
 #game-container {
   height: 100%;
   width: 100%;
@@ -84,21 +98,18 @@
   margin: 0 auto;
   background-color: #404040;
   width: 95%;
-  height: 11rem;
+  min-height: 11rem;
   padding-top: 1rem;
   color: white;
   font-family: "VT323", monospace;
   border-radius: 0.25rem;
   display: flex;
-}
-#favourite-games {
   margin-top: 1rem;
 }
 
 #sidebar-container {
-  padding: 0;
-  padding-top: 1rem;
-  height: 50%;
+  padding: 0.5rem 0;
+  min-height: 50%;
   background-color: rgba(255, 166, 0, 0.5);
   width: 85%;
   justify-content: center;
