@@ -22,11 +22,14 @@ function RegisterForm(props) {
         password,
         passwordVerify,
       };
+
+      console.log("signup data:", userSignUpData);
       await axios.post("/api/user/signup", userSignUpData);
       //watch the frick out if you dont pass validation on the password it just fails..
       await getLogged();
     } catch (err) {
       console.error(err);
+      console.log(err.response);
     }
   }
   return (
