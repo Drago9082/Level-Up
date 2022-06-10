@@ -2,7 +2,7 @@
 
   ## Link to Deployed Website
   
-  [https://agile-wildwood-01808.herokuapp.com/](https://garden-boys-missing-their-popp.herokuapp.com/)
+  https://garden-boys-missing-their-popp.herokuapp.com/
 
   ## Description
   
