@@ -233,6 +233,7 @@ module.exports = {
         return res.json(false);
       }
       await User.findOne({ _id: req.params.userId })
+        .populate("games")
         .select("-__v")
         .then((user) => {
           if (!user) {
